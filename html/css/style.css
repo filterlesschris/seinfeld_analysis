@@ -1,0 +1,125 @@
+/* remove default margin and padding from body */
+body {
+	padding-top: 40px;
+	height: 100%;
+}
+
+html {
+	height: 100%;
+}
+/* set map, body, and html to 100% of the screen size */
+
+#graphs-container {
+/*    margin-top: 40px ;*/
+	height: 100%;
+	width: 60%;
+}
+
+#map {
+	width: 100%;
+	position: inherit;
+	height: 600px;
+	margin:0;
+	padding:0;
+	border: 1px solid black;
+	/*border-radius: 8px;*/
+}
+
+.infoHeader {
+    color: black;
+    font-size: 16px;
+    text-align: center;
+}
+
+.description {
+    color: black;
+    font-size: 12px;
+    text-align: center;
+}
+
+.plate {
+    color: black;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* CSS from the Leaflet-Choropleth documentation */
+.legend {
+    /* padding: 6px 8px;  */
+    padding: 6px 8px;
+    font: 10px Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #555;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .legend ul {
+    padding: 0;
+    margin: 0;
+    clear: both;
+    list-style-type: none;
+  }
+  
+  .legend li {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
+  }
+  
+  .legend .min {
+    float: left;
+    padding-bottom: 5px;
+  }
+  
+  .legend .max {
+    float: right;
+  }
+  
+  h3 {
+    text-align: center;
+    font: 8px;
+  }
+ 
+
+  .tooltip {
+    background-color: #000000; 
+    color: #FFFFFF; 
+    border: 1px solid #FFFFFF; 
+    padding: 10px;
+    font-size: 20px;
+    pointer-events: none;
+  }
+  
+  .axis-text {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: small;
+    fill: #000000;
+    text-anchor: middle;
+    padding: 10px;
+  }
+  
+  .active {
+    font-weight: bold;
+    font-size: small;
+    fill: #000;
+    fill: #000000;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive {
+    font-weight: lighter;
+    font-size: small;
+    fill: #000000;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive:hover {
+    fill: #FF0000;
+    cursor: pointer;
+  }
