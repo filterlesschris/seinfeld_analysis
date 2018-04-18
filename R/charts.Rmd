@@ -1,0 +1,72 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+scripts <- read.csv("../../outputData/cleaned_scripts.csv")
+glimpse(scripts)
+```
+
+```{r}
+frogger <- subset(scripts, SEID == "S09E18")
+frogger <- frogger[-c(1,2)]
+names(frogger)
+rownames(frogger) <- seq(length=nrow(frogger))
+
+frogger["index"] = seq(length=nrow(frogger))
+
+
+head(frogger)
+
+plt <- ggplot(frogger, aes(index, CompSent)) + geom_line()
+plt
+```
+
+```{r}
+# Chart 2 - Cumulative line count per character by episode
+head(frogger)
+
+char <- "GEORGE"
+position <- 1
+
+jerry_count <- 0
+george_count <- 0
+kramer_count <- 0
+elaine_count <- 0
+second_count <- 0
+other_count <- 0
+
+char_count <- NULL
+char_list <- c("JERRY", "GEORGE", "KRAMER", "ELAINE", "SECONDARY", "OTHER")
+
+for(i in 1:dim(frogger)[1]){
+  
+  if(as.character(frogger$Character[i]) == "JERRY") {
+    jerry_count <- jerry_count + 1
+    jerry_count <- c(jerry_count)
+  }
+
+    current_char <- frogger$Character[i]
+
+  # Loop through all data above current row...
+  # find max char_count for current character
+  
+  max_count = 0
+  
+  for(j in 1:length(current_char)) {
+    
+    if(as.character(frogger$Character[j]) == as.character(frogger$Character))
+    
+  }
+  
+  if (as.character(frogger$Character[i]) == char) {
+    count = count + 1
+  }
+  char_count = c(char_count, count)
+}
+
+ggplot(frogger, aes(x = index, y = char_count)) + geom_line(aes(color = Character))
+```
+
