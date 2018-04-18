@@ -177,82 +177,277 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBJbnN0YWxsIHBhY2thZ2VzXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdncGxvdDIpXG5gYGAifQ== -->
-<pre class="r"><code># Install packages
-library(tidyverse)
-library(dplyr)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXHUwMDFiWzM3bS0tIFx1MDAxYlsxbUF0dGFjaGluZyBwYWNrYWdlc1x1MDAxYlsyMm0gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHRpZHl2ZXJzZSAxLjIuMSAtLVx1MDAxYlszOW1cblx1MDAxYlszN21cdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bWdncGxvdDJcdTAwMWJbMzdtIDIuMi4xICAgICBcdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzdtIDAuMi40XG5cdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bXRpYmJsZSBcdTAwMWJbMzdtIDEuNC4yICAgICBcdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bWRwbHlyICBcdTAwMWJbMzdtIDAuNy40XG5cdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzdtIDAuOC4wICAgICBcdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bXN0cmluZ3JcdTAwMWJbMzdtIDEuMy4wXG5cdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bXJlYWRyICBcdTAwMWJbMzdtIDEuMS4xICAgICBcdTAwMWJbMzJtdlx1MDAxYlszN20gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzdtIDAuMy4wXHUwMDFiWzM5bVxuXHUwMDFiWzM3bS0tIFx1MDAxYlsxbUNvbmZsaWN0c1x1MDAxYlsyMm0gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHRpZHl2ZXJzZV9jb25mbGljdHMoKSAtLVxuXHUwMDFiWzMxbXhcdTAwMWJbMzdtIFx1MDAxYlszNG1kcGx5clx1MDAxYlszN206Olx1MDAxYlszMm1maWx0ZXIoKVx1MDAxYlszN20gbWFza3MgXHUwMDFiWzM0bXN0YXRzXHUwMDFiWzM3bTo6ZmlsdGVyKClcblx1MDAxYlszMW14XHUwMDFiWzM3bSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzdtOjpcdTAwMWJbMzJtbGFnKClcdTAwMWJbMzdtICAgIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszN206OmxhZygpXHUwMDFiWzM5bVxuIn0= -->
+<pre><code>[37m-- [1mAttaching packages[22m --------------------------------------- tidyverse 1.2.1 --[39m
+[37m[32mv[37m [34mggplot2[37m 2.2.1     [32mv[37m [34mpurrr  [37m 0.2.4
+[32mv[37m [34mtibble [37m 1.4.2     [32mv[37m [34mdplyr  [37m 0.7.4
+[32mv[37m [34mtidyr  [37m 0.8.0     [32mv[37m [34mstringr[37m 1.3.0
+[32mv[37m [34mreadr  [37m 1.1.1     [32mv[37m [34mforcats[37m 0.3.0[39m
+[37m-- [1mConflicts[22m ------------------------------------------ tidyverse_conflicts() --
+[31mx[37m [34mdplyr[37m::[32mfilter()[37m masks [34mstats[37m::filter()
+[31mx[37m [34mdplyr[37m::[32mlag()[37m    masks [34mstats[37m::lag()[39m</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZ2dwbG90MilcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)
 library(ggplot2)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShkYXRhKVxuXG5gYGAifQ== -->
-<pre class="r"><code>summary(data)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBSZWFkIGluIGRhdGEgZmlsZVxuZGF0YSA8LSByZWFkLmNzdihcIi4uL3Jhd0RhdGEvc2VpbmZlbGQuY3N2XCIpXG5nbGltcHNlKGRhdGEpXG5cbiMgUmUtb3JkZXIgZGF0YWZyYW1lIGFuZCBkcm9wIG5vbi1udW1lcmljYWwgdmFyaWFibGVzXG5kYXRhIDwtIGRhdGFbLGMoXCJJTURCLlJhdGluZ1wiLCBcIlNlYXNvblwiLCBcIkVwaXNvZGVOb1wiLCBcbiAgICAgICAgICAgICAgICBcIlNlbnRpbWVudFRvdGFsXCIsIFwiTGluZUNvdW50VG90YWxcIiwgXCJXb3JkQ291bnRUb3RhbFwiLFxuICAgICAgICAgICAgICAgIFwiU2VudGltZW50SmVycnlcIiwgXCJMaW5lQ291bnRKZXJyeVwiLCBcIldvcmRDb3VudEplcnJ5XCIsXG4gICAgICAgICAgICAgICAgXCJTZW50aW1lbnRHZW9yZ2VcIiwgXCJMaW5lQ291bnRHZW9yZ2VcIiwgXCJXb3JkQ291bnRHZW9yZ2VcIixcbiAgICAgICAgICAgICAgICBcIlNlbnRpbWVudEtyYW1lclwiLCBcIkxpbmVDb3VudEtyYW1lclwiLCBcIldvcmRDb3VudEtyYW1lclwiLFxuICAgICAgICAgICAgICAgIFwiU2VudGltZW50RWxhaW5lXCIsIFwiTGluZUNvdW50RWxhaW5lXCIsIFwiV29yZENvdW50RWxhaW5lXCIsXG4gICAgICAgICAgICAgICAgXCJTZW50aW1lbnRNYWluQ2hhcnNcIiwgXCJMaW5lQ291bnRNYWluQ2hhcnNcIiwgXCJXb3JkQ291bnRNYWluQ2hhcnNcIixcbiAgICAgICAgICAgICAgICBcIlNlbnRpbWVudFNlY29uZGFyeVwiLCBcIkxpbmVDb3VudFNlY29uZGFyeVwiLCBcIldvcmRDb3VudFNlY29uZGFyeVwiLFxuICAgICAgICAgICAgICAgIFwiU2VudGltZW50T3RoZXJcIiwgXCJMaW5lQ291bnRPdGhlclwiLCBcIldvcmRDb3VudE90aGVyXCJcbiAgICAgICAgICAgICAgICApXVxuY29sbmFtZXMoZGF0YSlbY29sbmFtZXMoZGF0YSk9PVwiSU1EQi5SYXRpbmdcIl0gPC0gXCJJTURCcmF0aW5nXCJcbnN1bW1hcnkoZGF0YSlcbmBgYCJ9 -->
+<pre class="r"><code># Read in data file
+data &lt;- read.csv(&quot;../rawData/seinfeld.csv&quot;)
+glimpse(data)
+
+# Re-order dataframe and drop non-numerical variables
+data &lt;- data[,c(&quot;IMDB.Rating&quot;, &quot;Season&quot;, &quot;EpisodeNo&quot;, 
+                &quot;SentimentTotal&quot;, &quot;LineCountTotal&quot;, &quot;WordCountTotal&quot;,
+                &quot;SentimentJerry&quot;, &quot;LineCountJerry&quot;, &quot;WordCountJerry&quot;,
+                &quot;SentimentGeorge&quot;, &quot;LineCountGeorge&quot;, &quot;WordCountGeorge&quot;,
+                &quot;SentimentKramer&quot;, &quot;LineCountKramer&quot;, &quot;WordCountKramer&quot;,
+                &quot;SentimentElaine&quot;, &quot;LineCountElaine&quot;, &quot;WordCountElaine&quot;,
+                &quot;SentimentMainChars&quot;, &quot;LineCountMainChars&quot;, &quot;WordCountMainChars&quot;,
+                &quot;SentimentSecondary&quot;, &quot;LineCountSecondary&quot;, &quot;WordCountSecondary&quot;,
+                &quot;SentimentOther&quot;, &quot;LineCountOther&quot;, &quot;WordCountOther&quot;
+                )]
+colnames(data)[colnames(data)==&quot;IMDB.Rating&quot;] &lt;- &quot;IMDBrating&quot;
+summary(data)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShmaXQxKVxuXG5gYGAifQ== -->
+<pre class="r"><code>summary(fit1)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgSU1EQnJhdGluZyAgICAgICAgU2Vhc29uICAgICAgICBFcGlzb2RlTm8gICAgU2VudGltZW50VG90YWwgICAgIExpbmVDb3VudFRvdGFsIFxuIE1pbi4gICA6Ny41MDAgICBNaW4uICAgOjEuMDAwICAgTWluLiAgIDogMS4wICAgTWluLiAgIDotMC4wNjc3OCAgIE1pbi4gICA6MTgwLjAgIFxuIDFzdCBRdS46OC4zMDAgICAxc3QgUXUuOjQuMDAwICAgMXN0IFF1LjogNS4wICAgMXN0IFF1LjogMC4wNjU2NiAgIDFzdCBRdS46Mjg3LjAgIFxuIE1lZGlhbiA6OC41MDAgICBNZWRpYW4gOjYuMDAwICAgTWVkaWFuIDoxMS4wICAgTWVkaWFuIDogMC4wOTg4NSAgIE1lZGlhbiA6MzA4LjAgIFxuIE1lYW4gICA6OC41MjcgICBNZWFuICAgOjUuNTY2ICAgTWVhbiAgIDoxMS4zICAgTWVhbiAgIDogMC4xMDMwNiAgIE1lYW4gICA6MzE1LjcgIFxuIDNyZCBRdS46OC44MDAgICAzcmQgUXUuOjcuMDAwICAgM3JkIFF1LjoxNy4wICAgM3JkIFF1LjogMC4xNDQxNSAgIDNyZCBRdS46MzQxLjAgIFxuIE1heC4gICA6OS42MDAgICBNYXguICAgOjkuMDAwICAgTWF4LiAgIDoyNC4wICAgTWF4LiAgIDogMC4yODUzMiAgIE1heC4gICA6NzMwLjAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuIFdvcmRDb3VudFRvdGFsIFNlbnRpbWVudEplcnJ5ICAgICBMaW5lQ291bnRKZXJyeSAgIFdvcmRDb3VudEplcnJ5IFNlbnRpbWVudEdlb3JnZSAgIFxuIE1pbi4gICA6MTg4NCAgIE1pbi4gICA6LTAuMjMwOTEgICBNaW4uICAgOiAyNy4wMCAgIE1pbi4gICA6IDE2NyAgIE1pbi4gICA6LTAuMzYzODUgIFxuIDFzdCBRdS46Mjg3MSAgIDFzdCBRdS46IDAuMDI0NzAgICAxc3QgUXUuOiA3MS4wMCAgIDFzdCBRdS46IDYyNiAgIDFzdCBRdS46IDAuMDUyMjIgIFxuIE1lZGlhbiA6MzA4MCAgIE1lZGlhbiA6IDAuMDc3NjYgICBNZWRpYW4gOiA4Mi4wMCAgIE1lZGlhbiA6IDc5OSAgIE1lZGlhbiA6IDAuMTE5NDIgIFxuIE1lYW4gICA6MzE1NyAgIE1lYW4gICA6IDAuMDgyODYgICBNZWFuICAgOiA4NS40NyAgIE1lYW4gICA6IDg1MiAgIE1lYW4gICA6IDAuMTEwNzggIFxuIDNyZCBRdS46MzMxOSAgIDNyZCBRdS46IDAuMTQ4MjEgICAzcmQgUXUuOiA5Ni4wMCAgIDNyZCBRdS46MTAwNSAgIDNyZCBRdS46IDAuMTg0ODcgIFxuIE1heC4gICA6Njk4NiAgIE1heC4gICA6IDAuMzQ3NTggICBNYXguICAgOjI1MC4wMCAgIE1heC4gICA6MzkwMiAgIE1heC4gICA6IDAuNDQ3MjQgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE5BJ3MgICA6MSAgICAgICAgIFxuIExpbmVDb3VudEdlb3JnZSAgV29yZENvdW50R2VvcmdlICBTZW50aW1lbnRLcmFtZXIgICAgTGluZUNvdW50S3JhbWVyIFdvcmRDb3VudEtyYW1lclxuIE1pbi4gICA6IDEyLjAwICAgTWluLiAgIDogMTU4LjAgICBNaW4uICAgOi0wLjI2OTIyICAgTWluLiAgIDogNC4wMCAgIE1pbi4gICA6IDE5LjAgIFxuIDFzdCBRdS46IDQ0LjAwICAgMXN0IFF1LjogNDgxLjAgICAxc3QgUXUuOiAwLjA1ODExICAgMXN0IFF1LjozMC4wMCAgIDFzdCBRdS46MzA4LjAgIFxuIE1lZGlhbiA6IDU0LjAwICAgTWVkaWFuIDogNjA2LjUgICBNZWRpYW4gOiAwLjEzNDY1ICAgTWVkaWFuIDozOC4wMCAgIE1lZGlhbiA6NDA4LjAgIFxuIE1lYW4gICA6IDU2LjQ0ICAgTWVhbiAgIDogNjIyLjIgICBNZWFuICAgOiAwLjEzNzcxICAgTWVhbiAgIDozOC45NyAgIE1lYW4gICA6NDExLjEgIFxuIDNyZCBRdS46IDY3LjI1ICAgM3JkIFF1LjogNzQyLjAgICAzcmQgUXUuOiAwLjIyMjYwICAgM3JkIFF1Ljo0OS4wMCAgIDNyZCBRdS46NDkxLjAgIFxuIE1heC4gICA6MTI2LjAwICAgTWF4LiAgIDoxNDc4LjAgICBNYXguICAgOiAwLjQ0MzkxICAgTWF4LiAgIDo4MS4wMCAgIE1heC4gICA6OTEwLjAgIFxuIE5BJ3MgICA6MSAgICAgICAgTkEncyAgIDoxICAgICAgICBOQSdzICAgOjIgICAgICAgICAgTkEncyAgIDoyICAgICAgIE5BJ3MgICA6MiAgICAgIFxuIFNlbnRpbWVudEVsYWluZSAgICBMaW5lQ291bnRFbGFpbmUgV29yZENvdW50RWxhaW5lIFNlbnRpbWVudE1haW5DaGFycyBMaW5lQ291bnRNYWluQ2hhcnNcbiBNaW4uICAgOi0wLjIwNzIxICAgTWluLiAgIDogMy4wMCAgIE1pbi4gICA6IDEwLjAgICBNaW4uICAgOi0wLjA2OTk2ICAgTWluLiAgIDoxMTQuMCAgICAgXG4gMXN0IFF1LjogMC4wMTkyMyAgIDFzdCBRdS46MzYuMDAgICAxc3QgUXUuOjMyOC41ICAgMXN0IFF1LjogMC4wNjU3NiAgIDFzdCBRdS46MTk5LjAgICAgIFxuIE1lZGlhbiA6IDAuMTEzNDYgICBNZWRpYW4gOjQ2LjAwICAgTWVkaWFuIDo0MzQuMCAgIE1lZGlhbiA6IDAuMTAxMzkgICBNZWRpYW4gOjIyNS4wICAgICBcbiBNZWFuICAgOiAwLjExMDE2ICAgTWVhbiAgIDo0Ni42OCAgIE1lYW4gICA6NDM2LjUgICBNZWFuICAgOiAwLjEwODE5ICAgTWVhbiAgIDoyMjYuMiAgICAgXG4gM3JkIFF1LjogMC4xOTM4MCAgIDNyZCBRdS46NTcuMDAgICAzcmQgUXUuOjUyNS4wICAgM3JkIFF1LjogMC4xNTI1NiAgIDNyZCBRdS46MjQ4LjAgICAgIFxuIE1heC4gICA6IDAuMzcwMDMgICBNYXguICAgOjkyLjAwICAgTWF4LiAgIDo4NjEuMCAgIE1heC4gICA6IDAuMzAwMjggICBNYXguICAgOjQwOC4wICAgICBcbiBOQSdzICAgOjIgICAgICAgICAgTkEncyAgIDoyICAgICAgIE5BJ3MgICA6MiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gV29yZENvdW50TWFpbkNoYXJzIFNlbnRpbWVudFNlY29uZGFyeSBMaW5lQ291bnRTZWNvbmRhcnkgV29yZENvdW50U2Vjb25kYXJ5IFNlbnRpbWVudE90aGVyICAgIFxuIE1pbi4gICA6MTIwOSAgICAgICBNaW4uICAgOi0wLjUyNDU0ICAgTWluLiAgIDogIDIuMDAgICAgIE1pbi4gICA6ICAgOC4wMCAgICBNaW4uICAgOi0wLjMyOTAxICBcbiAxc3QgUXUuOjIwMTAgICAgICAgMXN0IFF1LjotMC4wMTc1NiAgIDFzdCBRdS46IDEwLjAwICAgICAxc3QgUXUuOiAgODQuNzUgICAgMXN0IFF1LjogMC4wMTMwMCAgXG4gTWVkaWFuIDoyMjk2ICAgICAgIE1lZGlhbiA6IDAuMDYyOTkgICBNZWRpYW4gOiAyMi4wMCAgICAgTWVkaWFuIDogMjExLjAwICAgIE1lZGlhbiA6IDAuMTAwMzggIFxuIE1lYW4gICA6MjMwOCAgICAgICBNZWFuICAgOiAwLjA3NjE5ICAgTWVhbiAgIDogMjkuOTkgICAgIE1lYW4gICA6IDI3OC44MyAgICBNZWFuICAgOiAwLjA5NDMxICBcbiAzcmQgUXUuOjI1NjMgICAgICAgM3JkIFF1LjogMC4xNTg0OSAgIDNyZCBRdS46IDM1LjI1ICAgICAzcmQgUXUuOiAzNzAuNzUgICAgM3JkIFF1LjogMC4xNTkyNiAgXG4gTWF4LiAgIDo1MzA0ICAgICAgIE1heC4gICA6IDAuNjM5NzUgICBNYXguICAgOjI0Ny4wMCAgICAgTWF4LiAgIDoyMTU2LjAwICAgIE1heC4gICA6IDAuMzYyMTMgIFxuICAgICAgICAgICAgICAgICAgICBOQSdzICAgOjc3ICAgICAgICAgTkEncyAgIDo3NyAgICAgICAgIE5BJ3MgICA6NzcgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiBMaW5lQ291bnRPdGhlciAgIFdvcmRDb3VudE90aGVyICBcbiBNaW4uICAgOiAgNy4wMCAgIE1pbi4gICA6ICA2Ni4wICBcbiAxc3QgUXUuOiA1NS4wMCAgIDFzdCBRdS46IDQ2Ny4wICBcbiBNZWRpYW4gOiA2OS4wMCAgIE1lZGlhbiA6IDY3Mi4wICBcbiBNZWFuICAgOiA3Mi44MSAgIE1lYW4gICA6IDY5My45ICBcbiAzcmQgUXUuOiA4Ny4wMCAgIDNyZCBRdS46IDg1MC4wICBcbiBNYXguICAgOjI3OC4wMCAgIE1heC4gICA6MzE1NC4wICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiJ9 -->
-<pre><code>   IMDBrating        Season        EpisodeNo    SentimentTotal     LineCountTotal 
- Min.   :7.500   Min.   :1.000   Min.   : 1.0   Min.   :-0.06778   Min.   :180.0  
- 1st Qu.:8.300   1st Qu.:4.000   1st Qu.: 5.0   1st Qu.: 0.06566   1st Qu.:287.0  
- Median :8.500   Median :6.000   Median :11.0   Median : 0.09885   Median :308.0  
- Mean   :8.527   Mean   :5.566   Mean   :11.3   Mean   : 0.10306   Mean   :315.7  
- 3rd Qu.:8.800   3rd Qu.:7.000   3rd Qu.:17.0   3rd Qu.: 0.14415   3rd Qu.:341.0  
- Max.   :9.600   Max.   :9.000   Max.   :24.0   Max.   : 0.28532   Max.   :730.0  
-                                                                                  
- WordCountTotal SentimentJerry     LineCountJerry   WordCountJerry SentimentGeorge   
- Min.   :1884   Min.   :-0.23091   Min.   : 27.00   Min.   : 167   Min.   :-0.36385  
- 1st Qu.:2871   1st Qu.: 0.02470   1st Qu.: 71.00   1st Qu.: 626   1st Qu.: 0.05222  
- Median :3080   Median : 0.07766   Median : 82.00   Median : 799   Median : 0.11942  
- Mean   :3157   Mean   : 0.08286   Mean   : 85.47   Mean   : 852   Mean   : 0.11078  
- 3rd Qu.:3319   3rd Qu.: 0.14821   3rd Qu.: 96.00   3rd Qu.:1005   3rd Qu.: 0.18487  
- Max.   :6986   Max.   : 0.34758   Max.   :250.00   Max.   :3902   Max.   : 0.44724  
-                                                                   NA's   :1         
- LineCountGeorge  WordCountGeorge  SentimentKramer    LineCountKramer WordCountKramer
- Min.   : 12.00   Min.   : 158.0   Min.   :-0.26922   Min.   : 4.00   Min.   : 19.0  
- 1st Qu.: 44.00   1st Qu.: 481.0   1st Qu.: 0.05811   1st Qu.:30.00   1st Qu.:308.0  
- Median : 54.00   Median : 606.5   Median : 0.13465   Median :38.00   Median :408.0  
- Mean   : 56.44   Mean   : 622.2   Mean   : 0.13771   Mean   :38.97   Mean   :411.1  
- 3rd Qu.: 67.25   3rd Qu.: 742.0   3rd Qu.: 0.22260   3rd Qu.:49.00   3rd Qu.:491.0  
- Max.   :126.00   Max.   :1478.0   Max.   : 0.44391   Max.   :81.00   Max.   :910.0  
- NA's   :1        NA's   :1        NA's   :2          NA's   :2       NA's   :2      
- SentimentElaine    LineCountElaine WordCountElaine SentimentMainChars LineCountMainChars
- Min.   :-0.20721   Min.   : 3.00   Min.   : 10.0   Min.   :-0.06996   Min.   :114.0     
- 1st Qu.: 0.01923   1st Qu.:36.00   1st Qu.:328.5   1st Qu.: 0.06576   1st Qu.:199.0     
- Median : 0.11346   Median :46.00   Median :434.0   Median : 0.10139   Median :225.0     
- Mean   : 0.11016   Mean   :46.68   Mean   :436.5   Mean   : 0.10819   Mean   :226.2     
- 3rd Qu.: 0.19380   3rd Qu.:57.00   3rd Qu.:525.0   3rd Qu.: 0.15256   3rd Qu.:248.0     
- Max.   : 0.37003   Max.   :92.00   Max.   :861.0   Max.   : 0.30028   Max.   :408.0     
- NA's   :2          NA's   :2       NA's   :2                                            
- WordCountMainChars SentimentSecondary LineCountSecondary WordCountSecondary SentimentOther    
- Min.   :1209       Min.   :-0.52454   Min.   :  2.00     Min.   :   8.00    Min.   :-0.32901  
- 1st Qu.:2010       1st Qu.:-0.01756   1st Qu.: 10.00     1st Qu.:  84.75    1st Qu.: 0.01300  
- Median :2296       Median : 0.06299   Median : 22.00     Median : 211.00    Median : 0.10038  
- Mean   :2308       Mean   : 0.07619   Mean   : 29.99     Mean   : 278.83    Mean   : 0.09431  
- 3rd Qu.:2563       3rd Qu.: 0.15849   3rd Qu.: 35.25     3rd Qu.: 370.75    3rd Qu.: 0.15926  
- Max.   :5304       Max.   : 0.63975   Max.   :247.00     Max.   :2156.00    Max.   : 0.36213  
-                    NA's   :77         NA's   :77         NA's   :77                           
- LineCountOther   WordCountOther  
- Min.   :  7.00   Min.   :  66.0  
- 1st Qu.: 55.00   1st Qu.: 467.0  
- Median : 69.00   Median : 672.0  
- Mean   : 72.81   Mean   : 693.9  
- 3rd Qu.: 87.00   3rd Qu.: 850.0  
- Max.   :278.00   Max.   :3154.0  
-                                  </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxubG0oZm9ybXVsYSA9IElNREJyYXRpbmcgfiAuLCBkYXRhID0gZGF0YSlcblxuUmVzaWR1YWxzOlxuICAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggXG4tMC42MDUzNyAtMC4xOTk1OCAtMC4wMzk5NSAgMC4xOTE1NCAgMC43ODQxNiBcblxuQ29lZmZpY2llbnRzOiAoNCBub3QgZGVmaW5lZCBiZWNhdXNlIG9mIHNpbmd1bGFyaXRpZXMpXG4gICAgICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHQgdmFsdWUgUHIoPnx0fCkgICAgXG4oSW50ZXJjZXB0KSAgICAgICAgIDguNDE4ZSswMCAgMi44OTdlLTAxICAyOS4wNTcgICA8MmUtMTYgKioqXG5TZWFzb24gICAgICAgICAgICAgLTYuODEzZS0wNCAgMi41MzNlLTAyICAtMC4wMjcgICAwLjk3ODYgICAgXG5FcGlzb2RlTm8gICAgICAgICAgIDEuNzI1ZS0wMyAgNi4wODRlLTAzICAgMC4yODQgICAwLjc3NzYgICAgXG5TZW50aW1lbnRUb3RhbCAgICAgIDMuMjY2ZSswMCAgMi45MjdlKzAwICAgMS4xMTYgICAwLjI2ODMgICAgXG5MaW5lQ291bnRUb3RhbCAgICAgIDYuMDUzZS0wNCAgMy4yNzdlLTAzICAgMC4xODUgICAwLjg1NDAgICAgXG5Xb3JkQ291bnRUb3RhbCAgICAgLTIuODc3ZS0wNCAgMi44NDFlLTA0ICAtMS4wMTMgICAwLjMxNDYgICAgXG5TZW50aW1lbnRKZXJyeSAgICAgIDEuODI2ZS0wMSAgOS45NjhlLTAxICAgMC4xODMgICAwLjg1NTIgICAgXG5MaW5lQ291bnRKZXJyeSAgICAgLTkuOTgyZS0wNCAgNS4xMzdlLTAzICAtMC4xOTQgICAwLjg0NjUgICAgXG5Xb3JkQ291bnRKZXJyeSAgICAgIDMuNzg3ZS0wNSAgMy41MjRlLTA0ICAgMC4xMDcgICAwLjkxNDcgICAgXG5TZW50aW1lbnRHZW9yZ2UgICAgIDUuOTA2ZS0wMSAgNi40NzFlLTAxICAgMC45MTMgICAwLjM2NDUgICAgXG5MaW5lQ291bnRHZW9yZ2UgICAgLTEuODIwZS0wMyAgNC4yNTFlLTAzICAtMC40MjggICAwLjY2OTggICAgXG5Xb3JkQ291bnRHZW9yZ2UgICAgIDguNzgyZS0wNCAgMy42ODllLTA0ICAgMi4zODEgICAwLjAxOTkgKiAgXG5TZW50aW1lbnRLcmFtZXIgICAgIDEuMzMyZS0wMSAgNS4wMjVlLTAxICAgMC4yNjUgICAwLjc5MTggICAgXG5MaW5lQ291bnRLcmFtZXIgICAgLTEuNjUwZS0wMyAgNi4zMzJlLTAzICAtMC4yNjEgICAwLjc5NTEgICAgXG5Xb3JkQ291bnRLcmFtZXIgICAgIDMuNjcyZS0wNCAgNS41NDVlLTA0ICAgMC42NjIgICAwLjUwOTkgICAgXG5TZW50aW1lbnRFbGFpbmUgICAgLTEuNDkwZS0wMSAgNS45MjVlLTAxICAtMC4yNTEgICAwLjgwMjEgICAgXG5MaW5lQ291bnRFbGFpbmUgICAgIDMuNDAwZS0wMyAgNS41OTJlLTAzICAgMC42MDggICAwLjU0NTAgICAgXG5Xb3JkQ291bnRFbGFpbmUgICAgIDIuOTI2ZS0wNCAgNC44OTllLTA0ICAgMC41OTcgICAwLjU1MjIgICAgXG5TZW50aW1lbnRNYWluQ2hhcnMgLTIuNzQ1ZSswMCAgMi44MjhlKzAwICAtMC45NzEgICAwLjMzNTAgICAgXG5MaW5lQ291bnRNYWluQ2hhcnMgICAgICAgICBOQSAgICAgICAgIE5BICAgICAgTkEgICAgICAgTkEgICAgXG5Xb3JkQ291bnRNYWluQ2hhcnMgICAgICAgICBOQSAgICAgICAgIE5BICAgICAgTkEgICAgICAgTkEgICAgXG5TZW50aW1lbnRTZWNvbmRhcnkgLTEuMjI2ZS0wMSAgMi44MTFlLTAxICAtMC40MzYgICAwLjY2NDAgICAgXG5MaW5lQ291bnRTZWNvbmRhcnkgLTUuNzg1ZS0wMyAgNi4zMjVlLTAzICAtMC45MTUgICAwLjM2MzUgICAgXG5Xb3JkQ291bnRTZWNvbmRhcnkgIDcuMzQ5ZS0wNCAgNi44MDRlLTA0ICAgMS4wODAgICAwLjI4MzcgICAgXG5TZW50aW1lbnRPdGhlciAgICAgLTIuMjA1ZS0wMSAgNi45MjJlLTAxICAtMC4zMTkgICAwLjc1MTAgICAgXG5MaW5lQ291bnRPdGhlciAgICAgICAgICAgICBOQSAgICAgICAgIE5BICAgICAgTkEgICAgICAgTkEgICAgXG5Xb3JkQ291bnRPdGhlciAgICAgICAgICAgICBOQSAgICAgICAgIE5BICAgICAgTkEgICAgICAgTkEgICAgXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuUmVzaWR1YWwgc3RhbmRhcmQgZXJyb3I6IDAuMzMyMiBvbiA3MiBkZWdyZWVzIG9mIGZyZWVkb21cbiAgKDc4IG9ic2VydmF0aW9ucyBkZWxldGVkIGR1ZSB0byBtaXNzaW5nbmVzcylcbk11bHRpcGxlIFItc3F1YXJlZDogIDAuMzE3OCxcdEFkanVzdGVkIFItc3F1YXJlZDogIDAuMTA5NCBcbkYtc3RhdGlzdGljOiAxLjUyNSBvbiAyMiBhbmQgNzIgREYsICBwLXZhbHVlOiAwLjA5MzE4XG4ifQ== -->
+<pre><code>
+Call:
+lm(formula = IMDBrating ~ ., data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.60537 -0.19958 -0.03995  0.19154  0.78416 
+
+Coefficients: (4 not defined because of singularities)
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         8.418e+00  2.897e-01  29.057   &lt;2e-16 ***
+Season             -6.813e-04  2.533e-02  -0.027   0.9786    
+EpisodeNo           1.725e-03  6.084e-03   0.284   0.7776    
+SentimentTotal      3.266e+00  2.927e+00   1.116   0.2683    
+LineCountTotal      6.053e-04  3.277e-03   0.185   0.8540    
+WordCountTotal     -2.877e-04  2.841e-04  -1.013   0.3146    
+SentimentJerry      1.826e-01  9.968e-01   0.183   0.8552    
+LineCountJerry     -9.982e-04  5.137e-03  -0.194   0.8465    
+WordCountJerry      3.787e-05  3.524e-04   0.107   0.9147    
+SentimentGeorge     5.906e-01  6.471e-01   0.913   0.3645    
+LineCountGeorge    -1.820e-03  4.251e-03  -0.428   0.6698    
+WordCountGeorge     8.782e-04  3.689e-04   2.381   0.0199 *  
+SentimentKramer     1.332e-01  5.025e-01   0.265   0.7918    
+LineCountKramer    -1.650e-03  6.332e-03  -0.261   0.7951    
+WordCountKramer     3.672e-04  5.545e-04   0.662   0.5099    
+SentimentElaine    -1.490e-01  5.925e-01  -0.251   0.8021    
+LineCountElaine     3.400e-03  5.592e-03   0.608   0.5450    
+WordCountElaine     2.926e-04  4.899e-04   0.597   0.5522    
+SentimentMainChars -2.745e+00  2.828e+00  -0.971   0.3350    
+LineCountMainChars         NA         NA      NA       NA    
+WordCountMainChars         NA         NA      NA       NA    
+SentimentSecondary -1.226e-01  2.811e-01  -0.436   0.6640    
+LineCountSecondary -5.785e-03  6.325e-03  -0.915   0.3635    
+WordCountSecondary  7.349e-04  6.804e-04   1.080   0.2837    
+SentimentOther     -2.205e-01  6.922e-01  -0.319   0.7510    
+LineCountOther             NA         NA      NA       NA    
+WordCountOther             NA         NA      NA       NA    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3322 on 72 degrees of freedom
+  (78 observations deleted due to missingness)
+Multiple R-squared:  0.3178,    Adjusted R-squared:  0.1094 
+F-statistic: 1.525 on 22 and 72 DF,  p-value: 0.09318</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-plot-begin eyJjb25kaXRpb25zIjpbXSwiaGVpZ2h0Ijo0MzIuNjMyOSwic2l6ZV9iZWhhdmlvciI6MCwid2lkdGgiOjcwMH0= -->
-<p><img src="data:image/png;base64,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" /></p>
-<!-- rnb-plot-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbG5hbWVzKGRhdGEpW2NvbG5hbWVzKGRhdGEpPT1cIklNREIuUmF0aW5nXCJdIDwtIFwiSU1EQnJhdGluZ1wiXG5zdW1tYXJ5KGRhdGEpXG5cbmBgYCJ9 -->
+<pre class="r"><code>#colnames(data)[colnames(data)==&quot;IMDB.Rating&quot;] &lt;- &quot;IMDBrating&quot;
+summary(data)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgSU1EQnJhdGluZyAgICAgICAgU2Vhc29uICAgICAgICBFcGlzb2RlTm8gICAgU2VudGltZW50VG90YWwgICAgIExpbmVDb3VudFRvdGFsICBXb3JkQ291bnRUb3RhbFxuIE1pbi4gICA6Ny41MDAgICBNaW4uICAgOjEuMDAwICAgTWluLiAgIDogMS4wICAgTWluLiAgIDotMC4wNjc3OCAgIE1pbi4gICA6MTgwLjAgICBNaW4uICAgOjE4ODQgIFxuIDFzdCBRdS46OC4zMDAgICAxc3QgUXUuOjQuMDAwICAgMXN0IFF1LjogNS4wICAgMXN0IFF1LjogMC4wNjU2NiAgIDFzdCBRdS46Mjg3LjAgICAxc3QgUXUuOjI4NzEgIFxuIE1lZGlhbiA6OC41MDAgICBNZWRpYW4gOjYuMDAwICAgTWVkaWFuIDoxMS4wICAgTWVkaWFuIDogMC4wOTg4NSAgIE1lZGlhbiA6MzA4LjAgICBNZWRpYW4gOjMwODAgIFxuIE1lYW4gICA6OC41MjcgICBNZWFuICAgOjUuNTY2ICAgTWVhbiAgIDoxMS4zICAgTWVhbiAgIDogMC4xMDMwNiAgIE1lYW4gICA6MzE1LjcgICBNZWFuICAgOjMxNTcgIFxuIDNyZCBRdS46OC44MDAgICAzcmQgUXUuOjcuMDAwICAgM3JkIFF1LjoxNy4wICAgM3JkIFF1LjogMC4xNDQxNSAgIDNyZCBRdS46MzQxLjAgICAzcmQgUXUuOjMzMTkgIFxuIE1heC4gICA6OS42MDAgICBNYXguICAgOjkuMDAwICAgTWF4LiAgIDoyNC4wICAgTWF4LiAgIDogMC4yODUzMiAgIE1heC4gICA6NzMwLjAgICBNYXguICAgOjY5ODYgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuIFNlbnRpbWVudEplcnJ5ICAgICBMaW5lQ291bnRKZXJyeSAgIFdvcmRDb3VudEplcnJ5IFNlbnRpbWVudEdlb3JnZSAgICBMaW5lQ291bnRHZW9yZ2UgIFdvcmRDb3VudEdlb3JnZSBcbiBNaW4uICAgOi0wLjIzMDkxICAgTWluLiAgIDogMjcuMDAgICBNaW4uICAgOiAxNjcgICBNaW4uICAgOi0wLjM2Mzg1ICAgTWluLiAgIDogMTIuMDAgICBNaW4uICAgOiAxNTguMCAgXG4gMXN0IFF1LjogMC4wMjQ3MCAgIDFzdCBRdS46IDcxLjAwICAgMXN0IFF1LjogNjI2ICAgMXN0IFF1LjogMC4wNTIyMiAgIDFzdCBRdS46IDQ0LjAwICAgMXN0IFF1LjogNDgxLjAgIFxuIE1lZGlhbiA6IDAuMDc3NjYgICBNZWRpYW4gOiA4Mi4wMCAgIE1lZGlhbiA6IDc5OSAgIE1lZGlhbiA6IDAuMTE5NDIgICBNZWRpYW4gOiA1NC4wMCAgIE1lZGlhbiA6IDYwNi41ICBcbiBNZWFuICAgOiAwLjA4Mjg2ICAgTWVhbiAgIDogODUuNDcgICBNZWFuICAgOiA4NTIgICBNZWFuICAgOiAwLjExMDc4ICAgTWVhbiAgIDogNTYuNDQgICBNZWFuICAgOiA2MjIuMiAgXG4gM3JkIFF1LjogMC4xNDgyMSAgIDNyZCBRdS46IDk2LjAwICAgM3JkIFF1LjoxMDA1ICAgM3JkIFF1LjogMC4xODQ4NyAgIDNyZCBRdS46IDY3LjI1ICAgM3JkIFF1LjogNzQyLjAgIFxuIE1heC4gICA6IDAuMzQ3NTggICBNYXguICAgOjI1MC4wMCAgIE1heC4gICA6MzkwMiAgIE1heC4gICA6IDAuNDQ3MjQgICBNYXguICAgOjEyNi4wMCAgIE1heC4gICA6MTQ3OC4wICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBOQSdzICAgOjEgICAgICAgICAgTkEncyAgIDoxICAgICAgICBOQSdzICAgOjEgICAgICAgXG4gU2VudGltZW50S3JhbWVyICAgIExpbmVDb3VudEtyYW1lciBXb3JkQ291bnRLcmFtZXIgU2VudGltZW50RWxhaW5lICAgIExpbmVDb3VudEVsYWluZSBXb3JkQ291bnRFbGFpbmVcbiBNaW4uICAgOi0wLjI2OTIyICAgTWluLiAgIDogNC4wMCAgIE1pbi4gICA6IDE5LjAgICBNaW4uICAgOi0wLjIwNzIxICAgTWluLiAgIDogMy4wMCAgIE1pbi4gICA6IDEwLjAgIFxuIDFzdCBRdS46IDAuMDU4MTEgICAxc3QgUXUuOjMwLjAwICAgMXN0IFF1LjozMDguMCAgIDFzdCBRdS46IDAuMDE5MjMgICAxc3QgUXUuOjM2LjAwICAgMXN0IFF1LjozMjguNSAgXG4gTWVkaWFuIDogMC4xMzQ2NSAgIE1lZGlhbiA6MzguMDAgICBNZWRpYW4gOjQwOC4wICAgTWVkaWFuIDogMC4xMTM0NiAgIE1lZGlhbiA6NDYuMDAgICBNZWRpYW4gOjQzNC4wICBcbiBNZWFuICAgOiAwLjEzNzcxICAgTWVhbiAgIDozOC45NyAgIE1lYW4gICA6NDExLjEgICBNZWFuICAgOiAwLjExMDE2ICAgTWVhbiAgIDo0Ni42OCAgIE1lYW4gICA6NDM2LjUgIFxuIDNyZCBRdS46IDAuMjIyNjAgICAzcmQgUXUuOjQ5LjAwICAgM3JkIFF1Ljo0OTEuMCAgIDNyZCBRdS46IDAuMTkzODAgICAzcmQgUXUuOjU3LjAwICAgM3JkIFF1Ljo1MjUuMCAgXG4gTWF4LiAgIDogMC40NDM5MSAgIE1heC4gICA6ODEuMDAgICBNYXguICAgOjkxMC4wICAgTWF4LiAgIDogMC4zNzAwMyAgIE1heC4gICA6OTIuMDAgICBNYXguICAgOjg2MS4wICBcbiBOQSdzICAgOjIgICAgICAgICAgTkEncyAgIDoyICAgICAgIE5BJ3MgICA6MiAgICAgICBOQSdzICAgOjIgICAgICAgICAgTkEncyAgIDoyICAgICAgIE5BJ3MgICA6MiAgICAgIFxuIFNlbnRpbWVudE1haW5DaGFycyBMaW5lQ291bnRNYWluQ2hhcnMgV29yZENvdW50TWFpbkNoYXJzIFNlbnRpbWVudFNlY29uZGFyeSBMaW5lQ291bnRTZWNvbmRhcnlcbiBNaW4uICAgOi0wLjA2OTk2ICAgTWluLiAgIDoxMTQuMCAgICAgIE1pbi4gICA6MTIwOSAgICAgICBNaW4uICAgOi0wLjUyNDU0ICAgTWluLiAgIDogIDIuMDAgICAgXG4gMXN0IFF1LjogMC4wNjU3NiAgIDFzdCBRdS46MTk5LjAgICAgICAxc3QgUXUuOjIwMTAgICAgICAgMXN0IFF1LjotMC4wMTc1NiAgIDFzdCBRdS46IDEwLjAwICAgIFxuIE1lZGlhbiA6IDAuMTAxMzkgICBNZWRpYW4gOjIyNS4wICAgICAgTWVkaWFuIDoyMjk2ICAgICAgIE1lZGlhbiA6IDAuMDYyOTkgICBNZWRpYW4gOiAyMi4wMCAgICBcbiBNZWFuICAgOiAwLjEwODE5ICAgTWVhbiAgIDoyMjYuMiAgICAgIE1lYW4gICA6MjMwOCAgICAgICBNZWFuICAgOiAwLjA3NjE5ICAgTWVhbiAgIDogMjkuOTkgICAgXG4gM3JkIFF1LjogMC4xNTI1NiAgIDNyZCBRdS46MjQ4LjAgICAgICAzcmQgUXUuOjI1NjMgICAgICAgM3JkIFF1LjogMC4xNTg0OSAgIDNyZCBRdS46IDM1LjI1ICAgIFxuIE1heC4gICA6IDAuMzAwMjggICBNYXguICAgOjQwOC4wICAgICAgTWF4LiAgIDo1MzA0ICAgICAgIE1heC4gICA6IDAuNjM5NzUgICBNYXguICAgOjI0Ny4wMCAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBOQSdzICAgOjc3ICAgICAgICAgTkEncyAgIDo3NyAgICAgICAgXG4gV29yZENvdW50U2Vjb25kYXJ5IFNlbnRpbWVudE90aGVyICAgICBMaW5lQ291bnRPdGhlciAgIFdvcmRDb3VudE90aGVyICBcbiBNaW4uICAgOiAgIDguMDAgICAgTWluLiAgIDotMC4zMjkwMSAgIE1pbi4gICA6ICA3LjAwICAgTWluLiAgIDogIDY2LjAgIFxuIDFzdCBRdS46ICA4NC43NSAgICAxc3QgUXUuOiAwLjAxMzAwICAgMXN0IFF1LjogNTUuMDAgICAxc3QgUXUuOiA0NjcuMCAgXG4gTWVkaWFuIDogMjExLjAwICAgIE1lZGlhbiA6IDAuMTAwMzggICBNZWRpYW4gOiA2OS4wMCAgIE1lZGlhbiA6IDY3Mi4wICBcbiBNZWFuICAgOiAyNzguODMgICAgTWVhbiAgIDogMC4wOTQzMSAgIE1lYW4gICA6IDcyLjgxICAgTWVhbiAgIDogNjkzLjkgIFxuIDNyZCBRdS46IDM3MC43NSAgICAzcmQgUXUuOiAwLjE1OTI2ICAgM3JkIFF1LjogODcuMDAgICAzcmQgUXUuOiA4NTAuMCAgXG4gTWF4LiAgIDoyMTU2LjAwICAgIE1heC4gICA6IDAuMzYyMTMgICBNYXguICAgOjI3OC4wMCAgIE1heC4gICA6MzE1NC4wICBcbiBOQSdzICAgOjc3ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code>   IMDBrating        Season        EpisodeNo    SentimentTotal     LineCountTotal  WordCountTotal
+ Min.   :7.500   Min.   :1.000   Min.   : 1.0   Min.   :-0.06778   Min.   :180.0   Min.   :1884  
+ 1st Qu.:8.300   1st Qu.:4.000   1st Qu.: 5.0   1st Qu.: 0.06566   1st Qu.:287.0   1st Qu.:2871  
+ Median :8.500   Median :6.000   Median :11.0   Median : 0.09885   Median :308.0   Median :3080  
+ Mean   :8.527   Mean   :5.566   Mean   :11.3   Mean   : 0.10306   Mean   :315.7   Mean   :3157  
+ 3rd Qu.:8.800   3rd Qu.:7.000   3rd Qu.:17.0   3rd Qu.: 0.14415   3rd Qu.:341.0   3rd Qu.:3319  
+ Max.   :9.600   Max.   :9.000   Max.   :24.0   Max.   : 0.28532   Max.   :730.0   Max.   :6986  
+                                                                                                 
+ SentimentJerry     LineCountJerry   WordCountJerry SentimentGeorge    LineCountGeorge  WordCountGeorge 
+ Min.   :-0.23091   Min.   : 27.00   Min.   : 167   Min.   :-0.36385   Min.   : 12.00   Min.   : 158.0  
+ 1st Qu.: 0.02470   1st Qu.: 71.00   1st Qu.: 626   1st Qu.: 0.05222   1st Qu.: 44.00   1st Qu.: 481.0  
+ Median : 0.07766   Median : 82.00   Median : 799   Median : 0.11942   Median : 54.00   Median : 606.5  
+ Mean   : 0.08286   Mean   : 85.47   Mean   : 852   Mean   : 0.11078   Mean   : 56.44   Mean   : 622.2  
+ 3rd Qu.: 0.14821   3rd Qu.: 96.00   3rd Qu.:1005   3rd Qu.: 0.18487   3rd Qu.: 67.25   3rd Qu.: 742.0  
+ Max.   : 0.34758   Max.   :250.00   Max.   :3902   Max.   : 0.44724   Max.   :126.00   Max.   :1478.0  
+                                                    NA's   :1          NA's   :1        NA's   :1       
+ SentimentKramer    LineCountKramer WordCountKramer SentimentElaine    LineCountElaine WordCountElaine
+ Min.   :-0.26922   Min.   : 4.00   Min.   : 19.0   Min.   :-0.20721   Min.   : 3.00   Min.   : 10.0  
+ 1st Qu.: 0.05811   1st Qu.:30.00   1st Qu.:308.0   1st Qu.: 0.01923   1st Qu.:36.00   1st Qu.:328.5  
+ Median : 0.13465   Median :38.00   Median :408.0   Median : 0.11346   Median :46.00   Median :434.0  
+ Mean   : 0.13771   Mean   :38.97   Mean   :411.1   Mean   : 0.11016   Mean   :46.68   Mean   :436.5  
+ 3rd Qu.: 0.22260   3rd Qu.:49.00   3rd Qu.:491.0   3rd Qu.: 0.19380   3rd Qu.:57.00   3rd Qu.:525.0  
+ Max.   : 0.44391   Max.   :81.00   Max.   :910.0   Max.   : 0.37003   Max.   :92.00   Max.   :861.0  
+ NA's   :2          NA's   :2       NA's   :2       NA's   :2          NA's   :2       NA's   :2      
+ SentimentMainChars LineCountMainChars WordCountMainChars SentimentSecondary LineCountSecondary
+ Min.   :-0.06996   Min.   :114.0      Min.   :1209       Min.   :-0.52454   Min.   :  2.00    
+ 1st Qu.: 0.06576   1st Qu.:199.0      1st Qu.:2010       1st Qu.:-0.01756   1st Qu.: 10.00    
+ Median : 0.10139   Median :225.0      Median :2296       Median : 0.06299   Median : 22.00    
+ Mean   : 0.10819   Mean   :226.2      Mean   :2308       Mean   : 0.07619   Mean   : 29.99    
+ 3rd Qu.: 0.15256   3rd Qu.:248.0      3rd Qu.:2563       3rd Qu.: 0.15849   3rd Qu.: 35.25    
+ Max.   : 0.30028   Max.   :408.0      Max.   :5304       Max.   : 0.63975   Max.   :247.00    
+                                                          NA's   :77         NA's   :77        
+ WordCountSecondary SentimentOther     LineCountOther   WordCountOther  
+ Min.   :   8.00    Min.   :-0.32901   Min.   :  7.00   Min.   :  66.0  
+ 1st Qu.:  84.75    1st Qu.: 0.01300   1st Qu.: 55.00   1st Qu.: 467.0  
+ Median : 211.00    Median : 0.10038   Median : 69.00   Median : 672.0  
+ Mean   : 278.83    Mean   : 0.09431   Mean   : 72.81   Mean   : 693.9  
+ 3rd Qu.: 370.75    3rd Qu.: 0.15926   3rd Qu.: 87.00   3rd Qu.: 850.0  
+ Max.   :2156.00    Max.   : 0.36213   Max.   :278.00   Max.   :3154.0  
+ NA's   :77                                                             </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShmaXQyKVxuXG5gYGAifQ== -->
+<pre class="r"><code>summary(fit2)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxubG0oZm9ybXVsYSA9IElNREJyYXRpbmcgfiAuLCBkYXRhID0gZGF0YTIpXG5cblJlc2lkdWFsczpcbiAgICAgTWluICAgICAgIDFRICAgTWVkaWFuICAgICAgIDNRICAgICAgTWF4IFxuLTAuNDgwNTYgLTAuMTgyNDYgLTAuMDIxNDIgIDAuMTQ5MzQgIDAuNjkyOTMgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgOC41NjRlKzAwICA1LjQwNGUtMDEgIDE1Ljg0NyAgIDwyZS0xNiAqKipcblBvc1RvdGFsICAgICAgICAtNS40OTBlKzAwICAxLjE0OWUrMDEgIC0wLjQ3OCAgIDAuNjM0NSAgICBcbk5lZ1RvdGFsICAgICAgICAgMS4wMDVlKzAwICAzLjc2MmUrMDAgICAwLjI2NyAgIDAuNzkwMyAgICBcbkNvbXBUb3RhbCAgICAgICAgMy42ODBlLTAxICAxLjE2OGUrMDEgICAwLjAzMiAgIDAuOTc1MCAgICBcbkxpbmVDb3VudFRvdGFsICAgNi43NDllLTAzICA1LjEyNmUtMDMgICAxLjMxNiAgIDAuMTkzMCAgICBcbldvcmRDb3VudFRvdGFsICAtMi4xMDllLTA0ICA0LjgzMmUtMDQgIC0wLjQzNiAgIDAuNjY0MCAgICBcblBvc0plcnJ5ICAgICAgICAgMi4yMTdlKzAwICA0LjExMWUrMDAgICAwLjUzOSAgIDAuNTkxNyAgICBcbk5lZ0plcnJ5ICAgICAgICAtMy45NThlLTAxICAxLjE1NGUrMDAgIC0wLjM0MyAgIDAuNzMyOSAgICBcbkNvbXBKZXJyeSAgICAgICAtMS4zMjhlKzAwICA0LjEzOGUrMDAgIC0wLjMyMSAgIDAuNzQ5NCAgICBcbkxpbmVDb3VudEplcnJ5ICAtOS4zMjZlLTAzICA2LjU0OWUtMDMgIC0xLjQyNCAgIDAuMTU5NSAgICBcbldvcmRDb3VudEplcnJ5ICAgNi4zOTNlLTA1ICA1LjY5OGUtMDQgICAwLjExMiAgIDAuOTExMCAgICBcblBvc0dlb3JnZSAgICAgICAgMi41ODhlLTAxICAzLjA3MGUrMDAgICAwLjA4NCAgIDAuOTMzMSAgICBcbk5lZ0dlb3JnZSAgICAgICAgOS4yNjNlLTAxICAxLjAwN2UrMDAgICAwLjkyMCAgIDAuMzYxMCAgICBcbkNvbXBHZW9yZ2UgICAgICAgMS41NjBlKzAwICAzLjU2NWUrMDAgICAwLjQzOCAgIDAuNjYzMSAgICBcbkxpbmVDb3VudEdlb3JnZSAtNy45NDhlLTAzICA2LjUwNGUtMDMgIC0xLjIyMiAgIDAuMjI2NCAgICBcbldvcmRDb3VudEdlb3JnZSAgNS41NjBlLTA0ICA2LjMwOWUtMDQgICAwLjg4MSAgIDAuMzgxNiAgICBcblBvc0tyYW1lciAgICAgICAtMi4wNjRlKzAwICAyLjM5NGUrMDAgIC0wLjg2MiAgIDAuMzkxOSAgICBcbk5lZ0tyYW1lciAgICAgICAgMS4zNDFlKzAwICA3LjQ5M2UtMDEgICAxLjc5MCAgIDAuMDc4NCAuICBcbkNvbXBLcmFtZXIgICAgICAgNi4yMjdlKzAwICAyLjYwOGUrMDAgICAyLjM4OCAgIDAuMDIwMSAqICBcbkxpbmVDb3VudEtyYW1lciAtOC43NzllLTAzICA3LjA5MGUtMDMgIC0xLjIzOCAgIDAuMjIwNCAgICBcbldvcmRDb3VudEtyYW1lciAgMS4xMThlLTA0ICA2LjUwOWUtMDQgICAwLjE3MiAgIDAuODY0MSAgICBcblBvc1NlY29uZCAgICAgICAgMS4xMDdlKzAwICAxLjIxN2UrMDAgICAwLjkxMCAgIDAuMzY2NiAgICBcbk5lZ1NlY29uZCAgICAgICAtNC4zNzRlLTAxICA1LjI4N2UtMDEgIC0wLjgyNyAgIDAuNDExMyAgICBcbkNvbXBTZWNvbmQgICAgICAtMS40NDhlKzAwICAxLjQwN2UrMDAgIC0xLjAyOSAgIDAuMzA3NCAgICBcbkxpbmVDb3VudFNlY29uZCAtMi4wNzVlLTAyICA4Ljk4OWUtMDMgIC0yLjMwOCAgIDAuMDI0NCAqICBcbldvcmRDb3VudFNlY29uZCAgMS4zMzdlLTAzICA4LjcxMmUtMDQgICAxLjUzNSAgIDAuMTMwMSAgICBcblBvc090aGVyICAgICAgICAtOC41NjdlLTAxICA0LjEyMmUrMDAgIC0wLjIwOCAgIDAuODM2MSAgICBcbk5lZ090aGVyICAgICAgICAgNi43NjJlLTAxICAxLjIzMGUrMDAgICAwLjU1MCAgIDAuNTg0NiAgICBcbkNvbXBPdGhlciAgICAgICAgMi40ODhlKzAwICA0LjE3MWUrMDAgICAwLjU5NyAgIDAuNTUzMCAgICBcbkxpbmVDb3VudE90aGVyICAtMy4yMDZlLTAzICA2LjMyMGUtMDMgIC0wLjUwNyAgIDAuNjEzOCAgICBcbldvcmRDb3VudE90aGVyICAtMi41MjhlLTA0ICA1LjUwNWUtMDQgIC0wLjQ1OSAgIDAuNjQ3OCAgICBcblR3b1BhcnRlciAgICAgICAgMS4yNjllKzAwICA3LjExMGUtMDEgICAxLjc4NSAgIDAuMDc5MiAuICBcblBpbG90ICAgICAgICAgICAtMS40MzRlKzAwICA4LjAwNGUtMDEgIC0xLjc5MiAgIDAuMDc4MiAuICBcbkZpbmFsZSAgICAgICAgICAtMS42MjZlKzAwICA3LjU3OWUtMDEgIC0yLjE0NiAgIDAuMDM1OSAqICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG5SZXNpZHVhbCBzdGFuZGFyZCBlcnJvcjogMC4zMjYxIG9uIDYxIGRlZ3JlZXMgb2YgZnJlZWRvbVxuICAoNzggb2JzZXJ2YXRpb25zIGRlbGV0ZWQgZHVlIHRvIG1pc3NpbmduZXNzKVxuTXVsdGlwbGUgUi1zcXVhcmVkOiAgMC40NDMyLFx0QWRqdXN0ZWQgUi1zcXVhcmVkOiAgMC4xNDIgXG5GLXN0YXRpc3RpYzogMS40NzIgb24gMzMgYW5kIDYxIERGLCAgcC12YWx1ZTogMC4wOTUzOVxuIn0= -->
+<pre><code>
+Call:
+lm(formula = IMDBrating ~ ., data = data2)
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNlaW5mZWxkIEFuYWx5c2lzIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQphdXRob3I6ICJDaHJpcyBHYXJnYW5vIg0KLS0tDQoNCmBgYHtyfQ0KIyBJbnN0YWxsIHBhY2thZ2VzDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZHBseXIpDQpsaWJyYXJ5KGdncGxvdDIpDQpgYGANCg0KYGBge3J9DQojIFJlYWQgaW4gZGF0YSBmaWxlDQpkYXRhIDwtIHJlYWQuY3N2KCIuLi9yYXdEYXRhL3NlaW5mZWxkLmNzdiIpDQpnbGltcHNlKGRhdGEpDQoNCiMgUmUtb3JkZXIgZGF0YWZyYW1lIGFuZCBkcm9wIG5vbi1udW1lcmljYWwgdmFyaWFibGVzDQpkYXRhIDwtIGRhdGFbLGMoIklNREIuUmF0aW5nIiwgIlNlYXNvbiIsICJFcGlzb2RlTm8iLCANCiAgICAgICAgICAgICAgICAiU2VudGltZW50VG90YWwiLCAiTGluZUNvdW50VG90YWwiLCAiV29yZENvdW50VG90YWwiLA0KICAgICAgICAgICAgICAgICJTZW50aW1lbnRKZXJyeSIsICJMaW5lQ291bnRKZXJyeSIsICJXb3JkQ291bnRKZXJyeSIsDQogICAgICAgICAgICAgICAgIlNlbnRpbWVudEdlb3JnZSIsICJMaW5lQ291bnRHZW9yZ2UiLCAiV29yZENvdW50R2VvcmdlIiwNCiAgICAgICAgICAgICAgICAiU2VudGltZW50S3JhbWVyIiwgIkxpbmVDb3VudEtyYW1lciIsICJXb3JkQ291bnRLcmFtZXIiLA0KICAgICAgICAgICAgICAgICJTZW50aW1lbnRFbGFpbmUiLCAiTGluZUNvdW50RWxhaW5lIiwgIldvcmRDb3VudEVsYWluZSIsDQogICAgICAgICAgICAgICAgIlNlbnRpbWVudE1haW5DaGFycyIsICJMaW5lQ291bnRNYWluQ2hhcnMiLCAiV29yZENvdW50TWFpbkNoYXJzIiwNCiAgICAgICAgICAgICAgICAiU2VudGltZW50U2Vjb25kYXJ5IiwgIkxpbmVDb3VudFNlY29uZGFyeSIsICJXb3JkQ291bnRTZWNvbmRhcnkiLA0KICAgICAgICAgICAgICAgICJTZW50aW1lbnRPdGhlciIsICJMaW5lQ291bnRPdGhlciIsICJXb3JkQ291bnRPdGhlciINCiAgICAgICAgICAgICAgICApXQ0KY29sbmFtZXMoZGF0YSlbY29sbmFtZXMoZGF0YSk9PSJJTURCLlJhdGluZyJdIDwtICJJTURCcmF0aW5nIg0Kc3VtbWFyeShkYXRhKQ0KYGBgDQoNCmBgYHtyfQ0KIyBDcmVhdGUgYSByZWdyZXNzaW9uIG1vZGVsIHRvIHByZWRpY3QgIklNREIuUmF0aW5nIg0KZml0MSA8LSBsbShJTURCcmF0aW5nIH4gLiwgZGF0YSkNCnN1bW1hcnkoZml0MSkNCg0KIyBSZXNpZHVhbCBQbG90DQpwbG90KGZpdDEkcmVzaWR1YWxzLCB0eXBlID0gImgiLCBjb2wgPSAicmVkIiwgbHdkID0gMikNCg0KIyBQbG90IEFjdHVhbCB2cy4gUHJlZGljdGVkIFZhbHVlcw0KcGxvdChmaXQxJGZpdHRlZC52YWx1ZXMsIHR5cGUgPSAibCIsIGNvbCA9ICJibHVlIiwgbHdkID0gMikNCmxpbmVzKCkNCg0KYGBgDQoNCg==</div>
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.48056 -0.18246 -0.02142  0.14934  0.69293 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      8.564e+00  5.404e-01  15.847   &lt;2e-16 ***
+PosTotal        -5.490e+00  1.149e+01  -0.478   0.6345    
+NegTotal         1.005e+00  3.762e+00   0.267   0.7903    
+CompTotal        3.680e-01  1.168e+01   0.032   0.9750    
+LineCountTotal   6.749e-03  5.126e-03   1.316   0.1930    
+WordCountTotal  -2.109e-04  4.832e-04  -0.436   0.6640    
+PosJerry         2.217e+00  4.111e+00   0.539   0.5917    
+NegJerry        -3.958e-01  1.154e+00  -0.343   0.7329    
+CompJerry       -1.328e+00  4.138e+00  -0.321   0.7494    
+LineCountJerry  -9.326e-03  6.549e-03  -1.424   0.1595    
+WordCountJerry   6.393e-05  5.698e-04   0.112   0.9110    
+PosGeorge        2.588e-01  3.070e+00   0.084   0.9331    
+NegGeorge        9.263e-01  1.007e+00   0.920   0.3610    
+CompGeorge       1.560e+00  3.565e+00   0.438   0.6631    
+LineCountGeorge -7.948e-03  6.504e-03  -1.222   0.2264    
+WordCountGeorge  5.560e-04  6.309e-04   0.881   0.3816    
+PosKramer       -2.064e+00  2.394e+00  -0.862   0.3919    
+NegKramer        1.341e+00  7.493e-01   1.790   0.0784 .  
+CompKramer       6.227e+00  2.608e+00   2.388   0.0201 *  
+LineCountKramer -8.779e-03  7.090e-03  -1.238   0.2204    
+WordCountKramer  1.118e-04  6.509e-04   0.172   0.8641    
+PosSecond        1.107e+00  1.217e+00   0.910   0.3666    
+NegSecond       -4.374e-01  5.287e-01  -0.827   0.4113    
+CompSecond      -1.448e+00  1.407e+00  -1.029   0.3074    
+LineCountSecond -2.075e-02  8.989e-03  -2.308   0.0244 *  
+WordCountSecond  1.337e-03  8.712e-04   1.535   0.1301    
+PosOther        -8.567e-01  4.122e+00  -0.208   0.8361    
+NegOther         6.762e-01  1.230e+00   0.550   0.5846    
+CompOther        2.488e+00  4.171e+00   0.597   0.5530    
+LineCountOther  -3.206e-03  6.320e-03  -0.507   0.6138    
+WordCountOther  -2.528e-04  5.505e-04  -0.459   0.6478    
+TwoParter        1.269e+00  7.110e-01   1.785   0.0792 .  
+Pilot           -1.434e+00  8.004e-01  -1.792   0.0782 .  
+Finale          -1.626e+00  7.579e-01  -2.146   0.0359 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3261 on 61 degrees of freedom
+  (78 observations deleted due to missingness)
+Multiple R-squared:  0.4432,    Adjusted R-squared:  0.142 
+F-statistic: 1.472 on 33 and 61 DF,  p-value: 0.09539</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShmaXQzKVxuXG5gYGAifQ== -->
+<pre class="r"><code>summary(fit3)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxubG0oZm9ybXVsYSA9IElNREJyYXRpbmcgfiAuLCBkYXRhID0gZGF0YTMpXG5cblJlc2lkdWFsczpcbiAgICAgTWluICAgICAgIDFRICAgTWVkaWFuICAgICAgIDNRICAgICAgTWF4IFxuLTAuNTM5NjggLTAuMTcyNDAgLTAuMDA2ODQgIDAuMTU5MDEgIDAuNzQ1MzIgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgOC42NjNlKzAwICA1Ljc1MmUtMDEgIDE1LjA2MSAgIDwyZS0xNiAqKipcblBvc1RvdGFsICAgICAgICAtMS4wMzdlKzAxICA3Ljk1MmUrMDAgIC0xLjMwNCAgIDAuMTk3MSAgICBcbk5lZ1RvdGFsICAgICAgICAgMi4xMjFlKzAwICAxLjk5N2UrMDAgICAxLjA2MiAgIDAuMjkyNCAgICBcbkNvbXBUb3RhbCAgICAgICAgMi40NjNlKzAwICA5LjI1NGUrMDAgICAwLjI2NiAgIDAuNzkxMCAgICBcbkxpbmVDb3VudFRvdGFsICAgOC4xNzhlLTAzICA1LjMwNWUtMDMgICAxLjU0MSAgIDAuMTI4NCAgICBcbldvcmRDb3VudFRvdGFsICAtNC4wNTllLTA0ICA0Ljc5NmUtMDQgIC0wLjg0NiAgIDAuNDAwOCAgICBcblBvc0plcnJ5ICAgICAgICAgMi43NDhlKzAwICAzLjIzOWUrMDAgICAwLjg0OCAgIDAuMzk5NiAgICBcbk5lZ0plcnJ5ICAgICAgICAgNC4zMDZlLTAyICA4LjI5OGUtMDEgICAwLjA1MiAgIDAuOTU4OCAgICBcbkNvbXBKZXJyeSAgICAgICAgMS40MzNlKzAwICAzLjUzNGUrMDAgICAwLjQwNiAgIDAuNjg2NSAgICBcbkxpbmVDb3VudEplcnJ5ICAtMS4wNzNlLTAyICA2Ljg0MWUtMDMgIC0xLjU2OSAgIDAuMTIxOSAgICBcbldvcmRDb3VudEplcnJ5ICAgMS44MDNlLTA0ICA1Ljg1MGUtMDQgICAwLjMwOCAgIDAuNzU5MCAgICBcblBvc0dlb3JnZSAgICAgICAgMS44MDNlKzAwICAyLjQ1N2UrMDAgICAwLjczNCAgIDAuNDY1NyAgICBcbk5lZ0dlb3JnZSAgICAgICAtNi40NTJlLTAyICA2LjcyMWUtMDEgIC0wLjA5NiAgIDAuOTIzOCAgICBcbkNvbXBHZW9yZ2UgICAgICAtMS4yNDdlKzAwICAyLjYyNmUrMDAgIC0wLjQ3NSAgIDAuNjM2NiAgICBcbkxpbmVDb3VudEdlb3JnZSAtOC4xODVlLTAzICA2LjgwOGUtMDMgIC0xLjIwMiAgIDAuMjMzOSAgICBcbldvcmRDb3VudEdlb3JnZSAgNy4xMDBlLTA0ICA2LjI5M2UtMDQgICAxLjEyOCAgIDAuMjYzNiAgICBcblBvc0tyYW1lciAgICAgICAgNS40MzRlLTAxICAxLjg4NmUrMDAgICAwLjI4OCAgIDAuNzc0MiAgICBcbk5lZ0tyYW1lciAgICAgICAgNC44MzllLTAxICA2LjAxNWUtMDEgICAwLjgwNSAgIDAuNDI0MiAgICBcbkNvbXBLcmFtZXIgICAgICAgMy41MjNlKzAwICAyLjA1NWUrMDAgICAxLjcxNSAgIDAuMDkxNSAuICBcbkxpbmVDb3VudEtyYW1lciAtNy42MTNlLTAzICA3LjY1NGUtMDMgIC0wLjk5NSAgIDAuMzIzOCAgICBcbldvcmRDb3VudEtyYW1lciAgMi40MTllLTA0ICA2LjU4N2UtMDQgICAwLjM2NyAgIDAuNzE0NyAgICBcblBvc1NlY29uZCAgICAgICAgMi4xNzBlLTAxICA5LjI2NmUtMDEgICAwLjIzNCAgIDAuODE1NiAgICBcbk5lZ1NlY29uZCAgICAgICAgNy42MzNlLTAyICA0Ljc4NmUtMDEgICAwLjE1OSAgIDAuODczOCAgICBcbkNvbXBTZWNvbmQgICAgICAtMy43ODdlLTAxICAxLjAwMGUrMDAgIC0wLjM3OSAgIDAuNzA2MyAgICBcbkxpbmVDb3VudFNlY29uZCAtMS44MTVlLTAyICA5LjQyM2UtMDMgIC0xLjkyNiAgIDAuMDU4OCAuICBcbldvcmRDb3VudFNlY29uZCAgMS4wNThlLTAzICA4Ljk3N2UtMDQgICAxLjE3OSAgIDAuMjQzMSAgICBcblBvc090aGVyICAgICAgICAgMS4xMzhlKzAwICAyLjc0OGUrMDAgICAwLjQxNCAgIDAuNjgwMiAgICBcbk5lZ090aGVyICAgICAgICAtNC4wNDdlLTAzICA4LjA4OGUtMDEgIC0wLjAwNSAgIDAuOTk2MCAgICBcbkNvbXBPdGhlciAgICAgICAgMi4zODFlLTAxICAzLjIzNGUrMDAgICAwLjA3NCAgIDAuOTQxNiAgICBcbkxpbmVDb3VudE90aGVyICAtNi4zOTZlLTAzICA2LjQ3OGUtMDMgIC0wLjk4NyAgIDAuMzI3NCAgICBcbldvcmRDb3VudE90aGVyICAgMi40NjllLTA1ICA1LjU2M2UtMDQgICAwLjA0NCAgIDAuOTY0OCAgICBcblR3b1BhcnRlciAgICAgICAgMS4yNjNlKzAwICA3LjQ5MWUtMDEgICAxLjY4NiAgIDAuMDk2OCAuICBcblBpbG90ICAgICAgICAgICAtMS4zNjllKzAwICA4LjY0N2UtMDEgIC0xLjU4MyAgIDAuMTE4NiAgICBcbkZpbmFsZSAgICAgICAgICAtMS40NDZlKzAwICA4LjEzNWUtMDEgIC0xLjc3OCAgIDAuMDgwNCAuICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG5SZXNpZHVhbCBzdGFuZGFyZCBlcnJvcjogMC4zMzgyIG9uIDYxIGRlZ3JlZXMgb2YgZnJlZWRvbVxuICAoNzggb2JzZXJ2YXRpb25zIGRlbGV0ZWQgZHVlIHRvIG1pc3NpbmduZXNzKVxuTXVsdGlwbGUgUi1zcXVhcmVkOiAgMC40MDEsXHRBZGp1c3RlZCBSLXNxdWFyZWQ6ICAwLjA3Njg5IFxuRi1zdGF0aXN0aWM6IDEuMjM3IG9uIDMzIGFuZCA2MSBERiwgIHAtdmFsdWU6IDAuMjMyN1xuIn0= -->
+<pre><code>
+Call:
+lm(formula = IMDBrating ~ ., data = data3)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.53968 -0.17240 -0.00684  0.15901  0.74532 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      8.663e+00  5.752e-01  15.061   &lt;2e-16 ***
+PosTotal        -1.037e+01  7.952e+00  -1.304   0.1971    
+NegTotal         2.121e+00  1.997e+00   1.062   0.2924    
+CompTotal        2.463e+00  9.254e+00   0.266   0.7910    
+LineCountTotal   8.178e-03  5.305e-03   1.541   0.1284    
+WordCountTotal  -4.059e-04  4.796e-04  -0.846   0.4008    
+PosJerry         2.748e+00  3.239e+00   0.848   0.3996    
+NegJerry         4.306e-02  8.298e-01   0.052   0.9588    
+CompJerry        1.433e+00  3.534e+00   0.406   0.6865    
+LineCountJerry  -1.073e-02  6.841e-03  -1.569   0.1219    
+WordCountJerry   1.803e-04  5.850e-04   0.308   0.7590    
+PosGeorge        1.803e+00  2.457e+00   0.734   0.4657    
+NegGeorge       -6.452e-02  6.721e-01  -0.096   0.9238    
+CompGeorge      -1.247e+00  2.626e+00  -0.475   0.6366    
+LineCountGeorge -8.185e-03  6.808e-03  -1.202   0.2339    
+WordCountGeorge  7.100e-04  6.293e-04   1.128   0.2636    
+PosKramer        5.434e-01  1.886e+00   0.288   0.7742    
+NegKramer        4.839e-01  6.015e-01   0.805   0.4242    
+CompKramer       3.523e+00  2.055e+00   1.715   0.0915 .  
+LineCountKramer -7.613e-03  7.654e-03  -0.995   0.3238    
+WordCountKramer  2.419e-04  6.587e-04   0.367   0.7147    
+PosSecond        2.170e-01  9.266e-01   0.234   0.8156    
+NegSecond        7.633e-02  4.786e-01   0.159   0.8738    
+CompSecond      -3.787e-01  1.000e+00  -0.379   0.7063    
+LineCountSecond -1.815e-02  9.423e-03  -1.926   0.0588 .  
+WordCountSecond  1.058e-03  8.977e-04   1.179   0.2431    
+PosOther         1.138e+00  2.748e+00   0.414   0.6802    
+NegOther        -4.047e-03  8.088e-01  -0.005   0.9960    
+CompOther        2.381e-01  3.234e+00   0.074   0.9416    
+LineCountOther  -6.396e-03  6.478e-03  -0.987   0.3274    
+WordCountOther   2.469e-05  5.563e-04   0.044   0.9648    
+TwoParter        1.263e+00  7.491e-01   1.686   0.0968 .  
+Pilot           -1.369e+00  8.647e-01  -1.583   0.1186    
+Finale          -1.446e+00  8.135e-01  -1.778   0.0804 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3382 on 61 degrees of freedom
+  (78 observations deleted due to missingness)
+Multiple R-squared:  0.401, Adjusted R-squared:  0.07689 
+F-statistic: 1.237 on 33 and 61 DF,  p-value: 0.2327</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNlaW5mZWxkIEFuYWx5c2lzIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQphdXRob3I6ICJDaHJpcyBHYXJnYW5vIg0KLS0tDQoNCmBgYHtyfQ0KIyBJbnN0YWxsIHBhY2thZ2VzDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZHBseXIpDQpsaWJyYXJ5KGdncGxvdDIpDQpgYGANCg0KYGBge3J9DQojIFJlYWQgaW4gZGF0YSBmaWxlDQpkYXRhIDwtIHJlYWQuY3N2KCIuLi9yYXdEYXRhL3NlaW5mZWxkLmNzdiIpDQpnbGltcHNlKGRhdGEpDQoNCiMgUmUtb3JkZXIgZGF0YWZyYW1lIGFuZCBkcm9wIG5vbi1udW1lcmljYWwgdmFyaWFibGVzDQpkYXRhIDwtIGRhdGFbLGMoIklNREIuUmF0aW5nIiwgIlNlYXNvbiIsICJFcGlzb2RlTm8iLCANCiAgICAgICAgICAgICAgICAiU2VudGltZW50VG90YWwiLCAiTGluZUNvdW50VG90YWwiLCAiV29yZENvdW50VG90YWwiLA0KICAgICAgICAgICAgICAgICJTZW50aW1lbnRKZXJyeSIsICJMaW5lQ291bnRKZXJyeSIsICJXb3JkQ291bnRKZXJyeSIsDQogICAgICAgICAgICAgICAgIlNlbnRpbWVudEdlb3JnZSIsICJMaW5lQ291bnRHZW9yZ2UiLCAiV29yZENvdW50R2VvcmdlIiwNCiAgICAgICAgICAgICAgICAiU2VudGltZW50S3JhbWVyIiwgIkxpbmVDb3VudEtyYW1lciIsICJXb3JkQ291bnRLcmFtZXIiLA0KICAgICAgICAgICAgICAgICJTZW50aW1lbnRFbGFpbmUiLCAiTGluZUNvdW50RWxhaW5lIiwgIldvcmRDb3VudEVsYWluZSIsDQogICAgICAgICAgICAgICAgIlNlbnRpbWVudE1haW5DaGFycyIsICJMaW5lQ291bnRNYWluQ2hhcnMiLCAiV29yZENvdW50TWFpbkNoYXJzIiwNCiAgICAgICAgICAgICAgICAiU2VudGltZW50U2Vjb25kYXJ5IiwgIkxpbmVDb3VudFNlY29uZGFyeSIsICJXb3JkQ291bnRTZWNvbmRhcnkiLA0KICAgICAgICAgICAgICAgICJTZW50aW1lbnRPdGhlciIsICJMaW5lQ291bnRPdGhlciIsICJXb3JkQ291bnRPdGhlciINCiAgICAgICAgICAgICAgICApXQ0KY29sbmFtZXMoZGF0YSlbY29sbmFtZXMoZGF0YSk9PSJJTURCLlJhdGluZyJdIDwtICJJTURCcmF0aW5nIg0Kc3VtbWFyeShkYXRhKQ0KYGBgDQoNCmBgYHtyfQ0KIyBDcmVhdGUgYSByZWdyZXNzaW9uIG1vZGVsIHRvIHByZWRpY3QgIklNREIuUmF0aW5nIg0KZml0MSA8LSBsbShJTURCcmF0aW5nIH4gLiwgZGF0YSkNCnN1bW1hcnkoZml0MSkNCg0KIyBSZXNpZHVhbCBQbG90DQpwbG90KGZpdDEkcmVzaWR1YWxzLCB0eXBlID0gImgiLCBjb2wgPSAicmVkIiwgbHdkID0gMikNCg0KIyBQbG90IEFjdHVhbCB2cy4gUHJlZGljdGVkIFZhbHVlcw0KcGxvdCh4ID0gZGF0YSRJTURCcmF0aW5nLCB5ID0gZml0MSRmaXR0ZWQudmFsdWVzKQ0KDQpwbG90KGZpdDEkZml0dGVkLnZhbHVlcywgdHlwZSA9ICJsIiwgY29sID0gImJsdWUiLCBsd2QgPSAyKQ0KbGluZXMoKQ0KDQpgYGANCg0KDQpgYGB7cn0NCiMgUmVhZCBpbiBkYXRhIGZpbGUgKHRoaXMgZGF0YSByZW1vdmVkIFNlbnRpbWVudHMgb2YgMCkNCmRhdGEyIDwtIHJlYWQuY3N2KCIuLi9yYXdEYXRhL3NlaW5mZWxkX3YyLmNzdiIpDQpnbGltcHNlKGRhdGEyKQ0KDQojIFJlLW9yZGVyIGRhdGFmcmFtZSBhbmQgZHJvcCBub24tbnVtZXJpY2FsIHZhcmlhYmxlcw0KZGF0YTIgPC0gZGF0YTJbLGMoIklNREJyYXRpbmciLCANCiAgICAgICAgICAgICAgICAiUG9zVG90YWwiLCAiTmVnVG90YWwiLCAiQ29tcFRvdGFsIiwgIkxpbmVDb3VudFRvdGFsIiwgIldvcmRDb3VudFRvdGFsIiwNCiAgICAgICAgICAgICAgICAiUG9zSmVycnkiLCAiTmVnSmVycnkiLCAiQ29tcEplcnJ5IiwgIkxpbmVDb3VudEplcnJ5IiwgIldvcmRDb3VudEplcnJ5IiwNCiAgICAgICAgICAgICAgICAiUG9zR2VvcmdlIiwgIk5lZ0dlb3JnZSIsICJDb21wR2VvcmdlIiwgIkxpbmVDb3VudEdlb3JnZSIsICJXb3JkQ291bnRHZW9yZ2UiLA0KICAgICAgICAgICAgICAgICJQb3NLcmFtZXIiLCAiTmVnS3JhbWVyIiwgIkNvbXBLcmFtZXIiLCAiTGluZUNvdW50S3JhbWVyIiwgIldvcmRDb3VudEtyYW1lciIsDQogICAgICAgICAgICAgICAgIlBvc1NlY29uZCIsICJOZWdTZWNvbmQiLCAiQ29tcFNlY29uZCIsICJMaW5lQ291bnRTZWNvbmQiLCAiV29yZENvdW50U2Vjb25kIiwNCiAgICAgICAgICAgICAgICAiUG9zT3RoZXIiLCAiTmVnT3RoZXIiLCAiQ29tcE90aGVyIiwgIkxpbmVDb3VudE90aGVyIiwgIldvcmRDb3VudE90aGVyIiwNCiAgICAgICAgICAgICAgICAiVHdvUGFydGVyIiwgIlBpbG90IiwgIkZpbmFsZSINCiAgICAgICAgICAgICAgICApXQ0KI2NvbG5hbWVzKGRhdGEpW2NvbG5hbWVzKGRhdGEpPT0iSU1EQi5SYXRpbmciXSA8LSAiSU1EQnJhdGluZyINCiNzdW1tYXJ5KGRhdGEpDQpgYGANCg0KYGBge3J9DQojIERyb3AgZXBpc29kZSAxLi4uDQpkYXRhMiA8LSBkYXRhW2MoMjpkaW0oZGF0YSlbMV0pLF0NCmhlYWQoZGF0YTIpDQoNCiMgQ3JlYXRlIGEgcmVncmVzc2lvbiBtb2RlbCB0byBwcmVkaWN0ICJJTURCLlJhdGluZyINCmZpdDIgPC0gbG0oSU1EQnJhdGluZyB+IC4sIGRhdGEyKQ0Kc3VtbWFyeShmaXQyKQ0KYGBgDQoNCmBgYHtyfQ0KIyBBYnNvbHV0ZSB2YWx1ZSBvZiBhbGwgbWVhc3VyZXMNCmRhdGEzIDwtIGFicyhkYXRhMikNCg0KZml0MyA8LSBsbShJTURCcmF0aW5nIH4gLiwgZGF0YTMpDQpzdW1tYXJ5KGZpdDMpDQpgYGA=</div>
 
 
 
