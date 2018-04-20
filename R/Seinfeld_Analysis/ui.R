@@ -53,7 +53,7 @@ server <- function(input, output) {
     x <- clean_scripts %>% filter(SEID == substr(input$Episode,1,6))
     
     ggplot(data = x, aes(X, CompSent)) + 
-      geom_line() + geom_smooth(method = "lm")
+      geom_line() + geom_smooth(span = 0.5, method = "loess")
   })
   #output$testPlot <-
 }
