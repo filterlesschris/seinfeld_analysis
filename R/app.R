@@ -24,40 +24,70 @@ episode_list <- unique(seinfeld_df$SEID)
 # Shiny Dashboard
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Seinfeld Episode Analysis"),
-  dashboardSidebar(),
+  skin = "black"
+  ,
+  dashboardHeader(
+    title = "Seinfeld Episode Analysis", 
+    titleWidth = 350) # end of dasboardHeader
+  ,
+  dashboardSidebar(
+    width = 350, 
+    sidebarMenu(
+      menuItem(text="Dashboard",
+               tabName = "dashboard", 
+               icon = icon("dashboard"),
+               selected = TRUE
+      ), # end of menuItem for machine learning tab
+      menuItem(text="Machine Learning", 
+               tabName = "machinelearn", 
+               icon = icon("cogs")
+      ), # end of menuItem for machine learning tab
+      menuItem(text="GitHub Repo", 
+               icon = icon("github"), 
+               href = "https://github.com/filterlesschris/seinfeld_analysis"
+      ) # end of menuTtem for link to github
+    ) # end of sidebar menu
+  ) # end of dashboardSidebar
+  ,
   dashboardBody(
-    fluidRow(
-      box(
-        title = "Episode Select",
-        selectInput("Episode",
-                    "Select Episode:",
-                    choices = paste(episode_list,episode_info$Title, sep=" - "),
-                    selected = episode_list[1]),
-        width = 800
-      )# end of box
-    )# end of fluidRow
-    ,
-    # start of fluidRow 2
-    fluidRow(
-      # plot chart 1
-      box(plotlyOutput("distPlot", height = 400, width = 1050))
-      ) # end of fluid row
-    ,
-    # start of fluid row to output chart 2
-    fluidRow(
-      box(plotlyOutput("appearPlot", height = 250)),
-      box(plotlyOutput("avgSentPlot", height = 250))
-    ) # end of fluid row
+    tabItems(
+      tabItem(tabName = "dashboard",
+              fluidRow(
+                box(
+                  width = 12,
+                  selectInput("Episode",
+                              "Select Episode:",
+                              choices = paste(episode_list,episode_info$Title, sep=" - "),
+                              selected = episode_list[1]),
+                  height = 100
+                )# end of box
+              )# end of fluidRow
+              ,
+              # start of fluidRow 2
+              fluidRow(
+                # plot chart 1
+                box(width = 12, plotlyOutput("distPlot", height = 400))
+              ) # end of fluid row
+              ,
+              # start of fluid row to output chart 2
+              fluidRow(
+                box(width = 6,plotlyOutput("appearPlot", height = 300)),
+                box(width = 6,plotlyOutput("avgSentPlot", height = 300))
+              ) # end of fluid row
+      ),
+      
+      tabItem(tabName = "machinelearn",
+              h2("Machine Learning")
+      )
+    )
     ,
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
-    )
-  )
-)
+    )# end of tags$head - This points to the css file
+  ) # end of dashboardBody
+) # end of dashboardPage
 
 server <- function(input, output) {
-  
   #begin output chart 1
   #output plotas variable name. And that is passed above to the ui
   output$distPlot <- renderPlotly({
@@ -66,7 +96,7 @@ server <- function(input, output) {
     
     g <- ggplot(data = x, aes(X, CompSent)) + 
       geom_line(color='black', size=0.5, alpha=0.2) + geom_smooth(se=FALSE, color="black", span = 0.5, method = "loess") + 
-      labs(x="Number of Lines", y="Sentiment") + 
+      labs(x="Position in Script", y="Overall Sentiment") + 
       ggtitle("Overall Sentinment")
     ggplotly(g)
   }) # end of output chart 1
@@ -160,6 +190,7 @@ server <- function(input, output) {
     
     g <- ggplot(episode, aes(x = index, y = CharLineCount)) + 
       geom_line(aes(color = Character)) +
+      labs(x="Position in Script", y="Count of Lines") + 
       ggtitle("Character Line Count")
     ggplotly(g)
   })
@@ -292,6 +323,7 @@ server <- function(input, output) {
     
     g <- ggplot(episode, aes(x = index, y = CharAvgSentiment)) + 
       geom_line(aes(color = Character)) +
+      labs(x="Position in Script", y="Rolling AVG Sentiment") +
       ggtitle("Character Sentiment (AVG)")
     ggplotly(g)
   }) # end of output chart 3
