@@ -42,6 +42,9 @@ data <- data[,c("IMDBrating", "Viewers",
 install.packages("corrplot")
 library(corrplot)
 
+corrplot(cor(data), type="lower", tl.pos="lt", tl.cex=0.66, tl.col="black", tl.srt=45,
+         cl.cex=0.5, cl.ratio=0.1, title = "Correlation Matrix")
+
 corr_matrix <- corrplot.mixed(cor(data), lower = "shade", upper = "number",
                               number.cex = 0.4, tl.pos = "lt", tl.cex = 0.5,
                               tl.col = "black", tl.srt = 45, cl.cex = 0.5, cl.ratio = 0.1)
@@ -83,6 +86,11 @@ test <- data[-train_ind, ]
 fit1 <- lm(IMDBrating ~ ., train)
 summary(fit1)
 
+# Save output
+regOut <- capture.output(summary(fit1))
+  cat("Summary of Linear Regression Model", regOut, 
+    file = "www/fit1_summary.txt")#, sep="n")
+
 # Residual Plot
 plot(fit1$residuals, type = "p", col = "red", lwd = 2,
      xlab = "Episode #", ylab = "Residual", main = "Residual Plot")
@@ -98,9 +106,8 @@ plot(x = train$IMDBrating, y = fit1$fitted.values, type = "p",
 
 # Plot actual IMDB Ratings in black
 plot(train$IMDBrating, type = "l", col = "black", lwd = 2,
-     ylim = c(-1, 10), xlab = "Episode #", ylab = "IMDB Rating",
-     main = "Training Data: Actual vs. Predicted IMDB Ratings", 
-     sub = "Black = Actual, Blue = Predicted, Green = Actual Average, Red = Model Resids, Gold = Predicted - Avg")
+     ylim = c(-1, 10), xlab = "Training Data Index", ylab = "IMDB Rating",
+     main = "Training Data: Actual vs. Predicted IMDB Ratings")
 abline(0,0)
 
 # Plot Actual Rating average in Green4
@@ -122,9 +129,8 @@ pred1 <- predict(fit1, test)
 
 # Plot actual IMDB Ratings in black
 plot(test$IMDBrating, type = "l", col = "black", lwd = 2,
-     ylim = c(-1, 10), xlab = "Episode #", ylab = "IMDB Rating",
-     main = "Test Data: Actual vs. Predicted IMDB Ratings", 
-     sub = "Black = Actual, Blue = Predicted, Green = Actual Average, Red = Model Resids, Gold = Predicted - Avg")
+     ylim = c(-1, 10), xlab = "Test Data Index", ylab = "IMDB Rating",
+     main = "Test Data: Actual vs. Predicted IMDB Ratings")
 abline(0,0)
 
 # Plot Actual Rating average in Green4
@@ -170,8 +176,7 @@ plot(x = train$IMDBrating, y = rf1$predicted, type = "p",
 # Plot actual IMDB Ratings in black
 plot(train$IMDBrating, type = "l", col = "black", lwd = 2,
      ylim = c(-1, 10), xlab = "Episode #", ylab = "IMDB Rating",
-     main = "Training Data: Actual vs. Predicted IMDB Ratings", 
-     sub = "Black = Actual, Blue = Predicted, Green = Actual Average, Red = Model Resids, Gold = Predicted - Avg")
+     main = "Training Data: Actual vs. Predicted IMDB Ratings")
 abline(0,0)
 
 # Plot Actual Rating average in Green4
@@ -193,9 +198,8 @@ pred_rf <- predict(rf1, test)
 
 # Plot actual IMDB Ratings in black
 plot(test$IMDBrating, type = "l", col = "black", lwd = 2,
-     ylim = c(-1, 10), xlab = "Episode #", ylab = "IMDB Rating",
-     main = "Test Data: Actual vs. Predicted IMDB Ratings", 
-     sub = "Black = Actual, Blue = Predicted, Green = Actual Average, Red = Model Resids, Gold = Predicted - Avg")
+     ylim = c(-1, 10), xlab = "Test Data Index", ylab = "IMDB Rating",
+     main = "Test Data: Actual vs. Predicted IMDB Ratings")
 abline(0,0)
 
 # Plot Actual Rating average in Green4
@@ -215,7 +219,7 @@ lines(pred_rf - test_avg, type = "p", col = "gold3")
 plot(rf1, main = "Random Forest Elbow Plot")
 
 source("rf_plot.R")
-tree_func(rf1, 2)
+tree_func(rf1, 50)
 
 ```
 

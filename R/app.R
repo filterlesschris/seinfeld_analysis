@@ -9,16 +9,22 @@ library(dplyr)
 
 require(data.table)
 
-# Read in csv file
+# Read in csv file - Benzen Computer
 clean_scripts <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/outputData/cleaned_scripts.csv")
 merged_scripts <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/outputData/merged_scripts.csv")
 seinfeld_df <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/outputData/seinfeld.csv")
 episode_info <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/rawData/episode_info.csv")
+
+# Read in csv file - Gargano Computer
+#clean_scripts <- read.csv("../outputData/cleaned_scripts.csv")
+#merged_scripts <- read.csv("../outputData/merged_scripts.csv")
+#seinfeld_df <- read.csv("../outputData/seinfeld.csv")
+#episode_info <- read.csv("../rawData/episode_info.csv")
+
 # copy for chart 2
 scripts <- clean_scripts
 # Create a list that holds the episode names for use in the drop down episode selector
 episode_list <- unique(seinfeld_df$SEID)
-
 
 
 # Shiny Dashboard
@@ -102,9 +108,8 @@ ui <- dashboardPage(
                     height=425,
                 p(
                   class = "text-muted",
-                  paste("Note: a route number can have several different trips, each",
-                        "with a different path. Only the most commonly-used path will",
-                        "be displayed on the map."
+                  paste("Before starting any machine learning, we watned to see how correlated our variables are.",
+                        "Unfortunately, we noticed that there is minimal correlation to the IMDB Rating variable."
                   ) # end of paste
                 ) # end of p
                 ) # end of box
@@ -120,9 +125,8 @@ ui <- dashboardPage(
                     height=425,
                     p(
                       class = "text-muted",
-                      paste("Note: a route number can have several different trips, each",
-                            "with a different path. Only the most commonly-used path will",
-                            "be displayed on the map."
+                      paste("Our linear regression model did not produce great results.",
+                            "The Actual vs. Predictions plot shows too much variance from the 1:1 relationship we were hoping for."
                       ) # end of paste
                     ) # end of p
                 ) # end of box
@@ -136,13 +140,24 @@ ui <- dashboardPage(
                     width=700)),
                 box(width=4,
                     height=425,
-                    p(
-                      class = "text-muted",
-                      paste("Note: a route number can have several different trips, each",
-                            "with a different path. Only the most commonly-used path will",
-                            "be displayed on the map."
-                      ) # end of paste
-                    ) # end of p
+                    p(class = "text-muted",
+                      paste("This basic plot shows how our model did in predicting IMDB rating.
+                            We had hoped that our model would at least provide a better score 
+                            than simply comparing against the average, but the difference there is negligable.")),
+                    p(class = "text-muted",
+                      paste("")),
+                    p(class = "text-muted",
+                      paste("")),
+                    p(class = "text-muted",
+                      paste("Black Line: actual IMDB ratings")),
+                    p(class = "text-muted",
+                      paste("Blue Line: predicted IMDB ratings")),
+                    p(class = "text-muted",
+                      paste("Green Line: average IMDB rating for training dataset")),
+                    p(class = "text-muted",
+                      paste("Red Bars: residuals (actual - predicted")),
+                    p(class = "text-muted",
+                      paste("Gold Dots: predicted - average"))
                 ) # end of box
               ) # end of row training
               ,
@@ -156,9 +171,7 @@ ui <- dashboardPage(
                     height=425,
                     p(
                       class = "text-muted",
-                      paste("Note: a route number can have several different trips, each",
-                            "with a different path. Only the most commonly-used path will",
-                            "be displayed on the map."
+                      paste("Similar to the plot above, applying the regression model to our testing data yielded minimal difference when comparing against the test data's average IMDB rating."
                       ) # end of paste
                     ) # end of p
                 ) # end of box
