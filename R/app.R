@@ -83,30 +83,86 @@ ui <- dashboardPage(
               fluidRow(
                 box(
                   width = 12,
-                  height = 100
-                )# end of box
+                  height = 100,
+                  h2(
+                    class = "h2",
+                    paste("Machine Learning Visual Analysis"
+                    ) # end of paste
+                  ) # end of p
+                ) # end of box
               )# end of row 1
               ,
               # start of row 2
-              # start of row 2
               fluidRow(box(
                 width = 8,
-                img(src="regPlot_testing.jpeg",
+                img(src="correl_matrix.jpg",
                     height=400,
                     width=700)),
                 box(width=4,
-                    height=425)
-              ) #end of row 2
+                    height=425,
+                p(
+                  class = "text-muted",
+                  paste("Note: a route number can have several different trips, each",
+                        "with a different path. Only the most commonly-used path will",
+                        "be displayed on the map."
+                  ) # end of paste
+                ) # end of p
+                ) # end of box
+              ) # end of row 2
               ,
               # start of row 3
+              fluidRow(box(
+                width = 8,
+                img(src="regPlot_actualVprediction.jpeg",
+                    height=400,
+                    width=700)),
+                box(width=4,
+                    height=425,
+                    p(
+                      class = "text-muted",
+                      paste("Note: a route number can have several different trips, each",
+                            "with a different path. Only the most commonly-used path will",
+                            "be displayed on the map."
+                      ) # end of paste
+                    ) # end of p
+                ) # end of box
+              ) #end of row 3
+              ,
+              # start of row training
               fluidRow(box(
                 width = 8,
                 img(src="regPlot_training.jpeg",
                     height=400,
                     width=700)),
                 box(width=4,
-                    height=425)
-              ) # end of row 3
+                    height=425,
+                    p(
+                      class = "text-muted",
+                      paste("Note: a route number can have several different trips, each",
+                            "with a different path. Only the most commonly-used path will",
+                            "be displayed on the map."
+                      ) # end of paste
+                    ) # end of p
+                ) # end of box
+              ) # end of row training
+              ,
+              # start of row testing
+              fluidRow(box(
+                width = 8,
+                img(src="regPlot_testing.jpeg",
+                    height=400,
+                    width=700)),
+                box(width=4,
+                    height=425,
+                    p(
+                      class = "text-muted",
+                      paste("Note: a route number can have several different trips, each",
+                            "with a different path. Only the most commonly-used path will",
+                            "be displayed on the map."
+                      ) # end of paste
+                    ) # end of p
+                ) # end of box
+              ) #end of row testing
       ) # end of tabItem
     )
     ,
