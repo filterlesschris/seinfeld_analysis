@@ -32,7 +32,7 @@ data <- data[,c("IMDBrating", "Viewers",
                 "PosOther", "NegOther", "CompOther", "LineCountOther", "WordCountOther",
                 "Pilot", "Finale"
                 )]
-summary(data)
+#summary(data)
 ```
 
 ```{r}
@@ -45,6 +45,7 @@ library(corrplot)
 corr_matrix <- corrplot.mixed(cor(data), lower = "shade", upper = "number",
                               number.cex = 0.4, tl.pos = "lt", tl.cex = 0.5,
                               tl.col = "black", tl.srt = 45, cl.cex = 0.5, cl.ratio = 0.1)
+
 ```
 
 ```{r}
@@ -89,7 +90,7 @@ plot(fit1$residuals, type = "p", col = "red", lwd = 2,
 # Plot Actual vs. Predicted Values
 plot(x = train$IMDBrating, y = fit1$fitted.values, type = "p", 
      xlab = "Actual IMDB Rating", ylab = "Predicted IMDB Rating",
-     main = "Actual vs. Predicted Plot",
+     main = "Regression: Actuals vs. Predictions",
     xlim = c(7.5, 9.5), ylim = c(7.5, 9.5))
 
 # Can't run the following code in a notebook...
@@ -142,12 +143,12 @@ lines(pred1 - test_avg, type = "p", col = "gold3")
 ```
 
 ```{r}
-# ML 2: Random Forest
+# ML 2: Random Forest, using randomForest library
 library(randomForest)
-install.packages("reprtree")
-library(reprtree)
+#install.packages("reprtree")
+#library(reprtree)
 
-rf1 <- randomForest(IMDBrating ~ ., data)
+rf1 <- randomForest(IMDBrating ~ ., train)
 summary(rf1)
 rf1
 
@@ -155,25 +156,78 @@ names(rf1)
 
 residuals <- data$IMDBrating - rf1$predicted
 
-plot(data$IMDBrating, rf1$predicted)
+plot(train$IMDBrating, rf1$predicted)
 
-# Compare residuals vs. (Actual - Average)
-actualLessAvg <- data$IMDBrating - mean(data$IMDBrating)
-plot(residuals, actualLessAvg)
+# Plot Actual vs. Predicted Values
+plot(x = train$IMDBrating, y = rf1$predicted, type = "p", 
+     xlab = "Actual IMDB Rating", ylab = "Predicted IMDB Rating",
+     main = "Random Forest: Actuals vs. Predictions",
+    xlim = c(7.5, 9.5), ylim = c(7.5, 9.5))
 
-# Actual vs. Predicted Plot... doesn't seem to work in R Notebook
-plot(rf1$predicted, type = "l", col = "blue", lwd = 2, ylim = c(-2,10))
+# Can't run the following code in a notebook...
+# Need to run in the console window
+
+# Plot actual IMDB Ratings in black
+plot(train$IMDBrating, type = "l", col = "black", lwd = 2,
+     ylim = c(-1, 10), xlab = "Episode #", ylab = "IMDB Rating",
+     main = "Training Data: Actual vs. Predicted IMDB Ratings", 
+     sub = "Black = Actual, Blue = Predicted, Green = Actual Average, Red = Model Resids, Gold = Predicted - Avg")
 abline(0,0)
-lines(data$IMDBrating, type = "l", col = "black", lwd = 1)
-lines(rep(mean(data$IMDBrating), dim(data)[1]), col = "green4")
-lines(actualLessAvg, type = "o", lwd = 1, col = "gold")
-lines(residuals, type = "h", lwd = 2, col = "red")
+
+# Plot Actual Rating average in Green4
+train_avg = rep(mean(train$IMDBrating), length(train$IMDBrating))
+lines(train_avg, type = "l", col = "green4", lwd = 2)
+
+# Plot fitted values in blue
+lines(rf1$predicted, type = "l", col = "blue", lwd = 3)
+
+# Plot residuals in red as bars
+lines(train$IMDBrating - rf1$predicted, type = "h", col = "red", lwd = 3)
+
+# Plot Predicted - Average as gold dots
+lines(rf1$predicted - train_avg, type = "p", col = "gold3")
+
+
+### Examine fitted model vs. test data
+pred_rf <- predict(rf1, test)
+
+# Plot actual IMDB Ratings in black
+plot(test$IMDBrating, type = "l", col = "black", lwd = 2,
+     ylim = c(-1, 10), xlab = "Episode #", ylab = "IMDB Rating",
+     main = "Test Data: Actual vs. Predicted IMDB Ratings", 
+     sub = "Black = Actual, Blue = Predicted, Green = Actual Average, Red = Model Resids, Gold = Predicted - Avg")
+abline(0,0)
+
+# Plot Actual Rating average in Green4
+test_avg = rep(mean(test$IMDBrating), length(test$IMDBrating))
+lines(test_avg, type = "l", col = "green4", lwd = 2)
+
+# Plot fitted values in blue
+lines(pred_rf, type = "l", col = "blue", lwd = 3)
+
+# Plot residuals in red as bars
+lines(test$IMDBrating - pred_rf, type = "h", col = "red", lwd = 3)
+
+# Plot Predicted - Average as gold dots
+lines(pred_rf - test_avg, type = "p", col = "gold3")
+
+##### Plot Random Forest
+plot(rf1, main = "Random Forest Elbow Plot")
+
+source("rf_plot.R")
+tree_func(rf1, 2)
 
 ```
 
 
 
 ```{r}
+# ML 3: Random Forest, using tree library
+install.packages("tree")
+library(tree)
 
+rf2 <- tree(IMDBrating ~ ., data = train)
+rf2
 
+tree:::plot.rf2
 ```
