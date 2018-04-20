@@ -1,0 +1,103 @@
+---
+title: "Seinfeld Analysis"
+output: html_notebook
+author: "Chris Gargano"
+---
+
+```{r}
+# Install packages
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+# Read in data file
+data <- read.csv("../outputData/seinfeld.csv")
+
+# Replace na values with 0
+data[is.na(data)] <- 0
+
+glimpse(data)
+
+head(data)
+
+# Re-order dataframe and drop non-numerical variables
+data <- data[,c("IMDBrating", "MilViewers",
+                "PosTotal", "NegTotal", "CompTotal", "LineCountTotal", "WordCountTotal",
+                "PosJerry", "NegJerry", "CompJerry", "LineCountJerry", "WordCountJerry",
+                "PosGeorge", "NegGeorge", "CompGeorge", "LineCountGeorge", "WordCountGeorge",
+                "PosKramer", "NegKramer", "CompKramer", "LineCountKramer", "WordCountKramer",
+                "PosSecond", "NegSecond", "CompSecond", "LineCountSecond", "WordCountSecond",
+                "PosOther", "NegOther", "CompOther", "LineCountOther", "WordCountOther",
+                "Pilot", "Finale"
+                )]
+summary(data)
+```
+
+```{r}
+# Split data into test and training subsets
+
+## 75% of the sample size
+smp_size <- floor(0.75 * nrow(data))
+
+## set the seed to make your partition reproductible
+set.seed(42)
+train_ind <- sample(seq_len(nrow(data)), size = smp_size)
+
+train <- data[train_ind, ]
+test <- data[-train_ind, ]
+
+```
+
+```{r}
+# Create a regression model to predict "IMDB.Rating"
+fit1 <- lm(IMDBrating ~ ., train)
+summary(fit1)
+
+# Residual Plot
+plot(fit1$residuals, type = "h", col = "red", lwd = 2)
+
+# Plot Actual vs. Predicted Values
+plot(x = train$IMDBrating, y = fit1$fitted.values)
+
+plot(fit1$fitted.values, type = "l", col = "blue", lwd = 2)
+lines(data$IMDBrating)
+
+```
+
+```{r}
+# Random Forest
+library(randomForest)
+
+names(data)
+
+rf1 <- randomForest(IMDBrating ~ ., data)
+rf1
+
+names(rf1)
+
+residuals <- data$IMDBrating - rf1$predicted
+
+plot(data$IMDBrating, rf1$predicted)
+
+# Compare residuals vs. (Actual - Average)
+actualLessAvg <- data$IMDBrating - mean(data$IMDBrating)
+plot(residuals, actualLessAvg)
+
+# Actual vs. Predicted Plot... doesn't seem to work in R Notebook
+plot(rf1$predicted, type = "l", col = "blue", lwd = 2, ylim = c(-2,10))
+abline(0,0)
+lines(data$IMDBrating, type = "l", col = "black", lwd = 1)
+lines(rep(mean(data$IMDBrating), dim(data)[1]), col = "green4")
+lines(actualLessAvg, type = "o", lwd = 1, col = "gold")
+lines(residuals, type = "h", lwd = 2, col = "red")
+
+```
+
+
+
+```{r}
+
+
+```
