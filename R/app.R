@@ -76,11 +76,38 @@ ui <- dashboardPage(
                 box(width = 6,plotlyOutput("appearPlot", height = 300)),
                 box(width = 6,plotlyOutput("avgSentPlot", height = 300))
               ) # end of fluid row
-      ),
+      ), #end of dashboard tab item
       
       tabItem(tabName = "machinelearn",
-              h2("Machine Learning")
-      )
+              # start of row 1
+              fluidRow(
+                box(
+                  width = 12,
+                  height = 100
+                )# end of box
+              )# end of row 1
+              ,
+              # start of row 2
+              # start of row 2
+              fluidRow(box(
+                width = 8,
+                img(src="regPlot_testing.jpeg",
+                    height=400,
+                    width=700)),
+                box(width=4,
+                    height=425)
+              ) #end of row 2
+              ,
+              # start of row 3
+              fluidRow(box(
+                width = 8,
+                img(src="regPlot_training.jpeg",
+                    height=400,
+                    width=700)),
+                box(width=4,
+                    height=425)
+              ) # end of row 3
+      ) # end of tabItem
     )
     ,
     tags$head(
