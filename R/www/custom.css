@@ -1,15 +1,18 @@
 .main-header .logo {
-          font-family: "Georgia", Times, "Times New Roman", serif;
-          font-weight: bold;
-          font-size: 24px;
+	font-family: "Georgia", Times, "Times New Roman", serif;
+	font-weight: bold;
+	font-size: 24px;
 }
 .skin-black .main-header .logo {
-          background-color: #ffffff;
+	background-color: #ffffff;
 }
 .skin-black .main-header .logo:hover {
-          background-color: #ffffff;
+	background-color: #ffffff;
 }
 .git-link {
-          font-size: 14px;
-          padding: 18px;
+	font-size: 14px;
+	padding: 18px;
+}
+.image {
+	background-image: url("george.png");	
 }

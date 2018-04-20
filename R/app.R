@@ -27,8 +27,10 @@ ui <- dashboardPage(
   skin = "black"
   ,
   dashboardHeader(
+    tags$li(class = "dropdown", tags$img(align="right",src="george.png",height="50px")),
     title = "Seinfeld Episode Analysis", 
-    titleWidth = 350) # end of dasboardHeader
+    titleWidth = 350
+  ) # end of dasboardHeader
   ,
   dashboardSidebar(
     width = 350, 
