@@ -1,0 +1,15 @@
+.main-header .logo {
+          font-family: "Georgia", Times, "Times New Roman", serif;
+          font-weight: bold;
+          font-size: 24px;
+}
+.skin-black .main-header .logo {
+          background-color: #ffffff;
+}
+.skin-black .main-header .logo:hover {
+          background-color: #ffffff;
+}
+.git-link {
+          font-size: 14px;
+          padding: 18px;
+}
