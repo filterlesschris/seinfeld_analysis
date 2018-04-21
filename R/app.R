@@ -10,10 +10,10 @@ library(dplyr)
 require(data.table)
 
 # Read in csv file - Benzen Computer
-clean_scripts <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/outputData/cleaned_scripts.csv")
-merged_scripts <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/outputData/merged_scripts.csv")
-seinfeld_df <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/outputData/seinfeld.csv")
-episode_info <- read.csv("~/GitHub/seinfeld_analysis/seinfeld_analysis/rawData/episode_info.csv")
+clean_scripts <- read.csv("~/GitHub/seinfeld_analysis/outputData/cleaned_scripts.csv")
+merged_scripts <- read.csv("~/GitHub/seinfeld_analysis/outputData/merged_scripts.csv")
+seinfeld_df <- read.csv("~/GitHub/seinfeld_analysis/outputData/seinfeld.csv")
+episode_info <- read.csv("~/GitHub/seinfeld_analysis/rawData/episode_info.csv")
 
 # Read in csv file - Gargano Computer
 #clean_scripts <- read.csv("../outputData/cleaned_scripts.csv")
