@@ -60,6 +60,13 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "dashboard",
+              #Start of fulidRow 0
+              fluidRow(
+                # plot chart 1
+                box(width = 12, plotlyOutput("overallPlot", height = 400))
+              ) # end of fluid row
+              ,
+              #Start of fulidRow 1
               fluidRow(
                 box(
                   width = 12,
@@ -218,6 +225,21 @@ ui <- dashboardPage(
 ) # end of dashboardPage
 
 server <- function(input, output) {
+  #begin output chart 0
+  output$overallPlot <- renderPlotly({
+    
+    # Change seinfeld_df's Season variable to a factor
+    seinfeld_df2 <- seinfeld_df
+    seinfeld_df2$Season <- as.factor(seinfeld_df2$Season)
+    
+    cg1 <- ggplot(seinfeld_df2, aes(X, IMDBrating), color = as.factor(Season)) + 
+      geom_point(aes(color = Season), size = 3) + geom_line() +  
+      #geom_smooth(color="black", span = 0.5, method = "loess", alpha = 0.33) + 
+      scale_color_brewer(palette = "Set1") + 
+      labs(x = "Episode #", y = "IMDB Rating", title = "Seinfeld IMDB Ratings")
+    ggplotly(cg1)
+  }) # end of output chart 1
+  
   #begin output chart 1
   #output plotas variable name. And that is passed above to the ui
   output$distPlot <- renderPlotly({
@@ -321,7 +343,8 @@ server <- function(input, output) {
     g <- ggplot(episode, aes(x = index, y = CharLineCount)) + 
       geom_line(aes(color = Character)) +
       labs(x="Position in Script", y="Count of Lines") + 
-      ggtitle("Character Line Count")
+      ggtitle("Character Line Count") +
+      theme(legend.position = "bottom")
     ggplotly(g)
   })
   #end output chart 2
@@ -454,7 +477,8 @@ server <- function(input, output) {
     g <- ggplot(episode, aes(x = index, y = CharAvgSentiment)) + 
       geom_line(aes(color = Character)) +
       labs(x="Position in Script", y="Rolling AVG Sentiment") +
-      ggtitle("Character Sentiment (AVG)")
+      ggtitle("Character Sentiment (AVG)") +
+      theme(legend.position = "bottom")
     ggplotly(g)
   }) # end of output chart 3
 }

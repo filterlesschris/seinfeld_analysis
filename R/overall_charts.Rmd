@@ -1,0 +1,67 @@
+---
+title: "Seinfeld Mainpage"
+output: html_notebook
+---
+
+
+```{r}
+# Load libraries
+library(shiny)
+library(tidyr)
+library(dplyr)
+library(plotly)
+# packageVersion('plotly')
+require(data.table)
+```
+
+```{r}
+# Set Working Directory
+setwd("~/UCI Data Science/Projects/UCI-Project-3/myFiles/R")
+
+# Read in and gliimpse data
+seinfeld_df <- read.csv("../outputData/seinfeld.csv")
+seinfeld_df$Season <- as.factor(seinfeld_df$Season)
+glimpse(seinfeld_df)
+
+clean_scripts <- read.csv("../outputData/cleaned_scripts.csv")
+glimpse(clean_scripts)
+```
+
+```{r}
+# Plot overall IMDB rating by Episode
+
+cg1 <- ggplot(seinfeld_df, aes(X, IMDBrating), color = as.factor(Season)) + 
+        geom_point(aes(color = Season), size = 3) + geom_line() +  
+        #geom_smooth(color="black", span = 0.5, method = "loess", alpha = 0.33) + 
+        scale_color_brewer(palette = "Set1") + 
+        labs(x = "Episode #", y = "IMDB Rating", title = "Seinfeld IMDB Ratings")
+ggplotly(cg1)
+```
+
+```{r}
+# Clean data
+# Add a column of 1's to the clean_scripts data
+clean_scripts$Count <- rep(1, length(clean_scripts$X))
+script2 <- clean_scripts %>%
+  select(Character, EpisodeNo, Count) %>%
+  group_by(EpisodeNo, Character) %>%
+  summarise_all(funs(sum))
+script2$EpisodeNo <- as.factor(script2$EpisodeNo)
+head(script2)
+
+#Number of Lines per Episode by Character
+propFunction = function(data) {
+  as.numeric(data[3]) / sum(script2$Count[script2$EpisodeNo == data[1] & 
+                                               script2$Character == data[2]])
+}
+script2$Prop <- apply(script2, 1, propFunction)
+
+cg2 <- ggplot(script2, aes(x = EpisodeNo, y = Prop), fill = Character) +
+                geom_area(color = "black", size = 0.2, alpha = 0.5) +
+                labs(x = "Episode #", y = "% of Total",
+                     title = "Character DIalogue Per Episode") + 
+                scale_y_continuous(labels = scales::percent) +
+                scale_fill_brewer(palette = "Set1")
+cg2
+```
+
