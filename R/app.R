@@ -98,7 +98,7 @@ ui <- dashboardPage(
                 ) # end of box
               )# end of row 1
               ,
-              # start of row 2
+              # start of row correl_matrix
               fluidRow(box(
                 width = 8,
                 img(src="correl_matrix.jpg",
@@ -113,9 +113,9 @@ ui <- dashboardPage(
                   ) # end of paste
                 ) # end of p
                 ) # end of box
-              ) # end of row 2
+              ) # end of row correl_matrix
               ,
-              # start of row 3
+              # start of row regPlot_actualVprediction
               fluidRow(box(
                 width = 8,
                 img(src="regPlot_actualVprediction.jpeg",
@@ -130,7 +130,7 @@ ui <- dashboardPage(
                       ) # end of paste
                     ) # end of p
                 ) # end of box
-              ) #end of row 3
+              ) #end of row regPlot_actualVprediction
               ,
               # start of row training
               fluidRow(box(
@@ -161,6 +161,22 @@ ui <- dashboardPage(
                 ) # end of box
               ) # end of row training
               ,
+              # start of row regPlot_actualVpredictionZoom
+              fluidRow(box(
+                width = 8,
+                img(src="regPlot_trainingZoom.jpeg",
+                    height=400,
+                    width=700)),
+                box(width=4,
+                    height=425,
+                    p(
+                      class = "text-muted",
+                      paste("The above chart zoomed in."
+                      ) # end of paste
+                    ) # end of p
+                ) # end of box
+              ) #end of row regPlot_actualVpredictionZoom
+              ,
               # start of row testing
               fluidRow(box(
                 width = 8,
@@ -176,6 +192,22 @@ ui <- dashboardPage(
                     ) # end of p
                 ) # end of box
               ) #end of row testing
+              ,
+              # start of row regPlot_actualVpredictionZoom
+              fluidRow(box(
+                width = 8,
+                img(src="regPlot_testingZoom.jpeg",
+                    height=400,
+                    width=700)),
+                box(width=4,
+                    height=425,
+                    p(
+                      class = "text-muted",
+                      paste("The above chart zoomed in."
+                      ) # end of paste
+                    ) # end of p
+                ) # end of box
+              ) #end of row regPlot_testingZoom
       ) # end of tabItem
     )
     ,
